@@ -1,4 +1,5 @@
 using Teste.entities;
+using Teste.utils;
 
 namespace Teste
 {
@@ -35,7 +36,7 @@ namespace Teste
 
         private async void btnentrar_Click(object sender, EventArgs e)
         {
-            string senha = utils.Crip.EncryptAccessAsync(txtpass.Text);
+            string senha = Crip.EncryptAccessAsync(txtpass.Text);
             string username = txtuser.Text;
             List<Access> accessList = DataAccessObject.Access.AccessDAO.GetAllAsync().Result;
             bool loggedIn = true;
