@@ -29,78 +29,83 @@
         private void InitializeComponent()
         {
             pnlateral = new Panel();
-            button2 = new Button();
-            button1 = new Button();
+            btnprod = new Button();
             btnusuario = new Button();
-            panel2 = new Panel();
+            pnlsup = new Panel();
             btnFechar = new Button();
             label7 = new Label();
+            panel1 = new Panel();
+            lblmsg = new Label();
+            btncomprar = new Button();
             pnlateral.SuspendLayout();
-            panel2.SuspendLayout();
+            pnlsup.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pnlateral
             // 
             pnlateral.BackColor = Color.FromArgb(224, 224, 224);
-            pnlateral.Controls.Add(button2);
-            pnlateral.Controls.Add(button1);
+            pnlateral.Controls.Add(btncomprar);
+            pnlateral.Controls.Add(btnprod);
             pnlateral.Controls.Add(btnusuario);
             pnlateral.Dock = DockStyle.Left;
             pnlateral.Location = new Point(0, 44);
             pnlateral.Name = "pnlateral";
-            pnlateral.Size = new Size(160, 406);
+            pnlateral.Padding = new Padding(2);
+            pnlateral.Size = new Size(206, 370);
             pnlateral.TabIndex = 0;
             // 
-            // button2
+            // btnprod
             // 
-            button2.BackColor = SystemColors.ActiveCaption;
-            button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Top;
-            button2.Location = new Point(0, 74);
-            button2.Name = "button2";
-            button2.Size = new Size(160, 37);
-            button2.TabIndex = 3;
-            button2.Text = "Usuarios";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ActiveCaption;
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.Location = new Point(0, 37);
-            button1.Name = "button1";
-            button1.Size = new Size(160, 37);
-            button1.TabIndex = 2;
-            button1.Text = "Produtos";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnprod.BackColor = Color.Goldenrod;
+            btnprod.Cursor = Cursors.Hand;
+            btnprod.FlatAppearance.BorderSize = 0;
+            btnprod.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btnprod.FlatStyle = FlatStyle.Flat;
+            btnprod.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btnprod.ForeColor = SystemColors.ButtonFace;
+            btnprod.Location = new Point(6, 48);
+            btnprod.Margin = new Padding(5);
+            btnprod.Name = "btnprod";
+            btnprod.Size = new Size(193, 37);
+            btnprod.TabIndex = 2;
+            btnprod.Text = "Produtos";
+            btnprod.UseVisualStyleBackColor = false;
+            btnprod.Click += button1_Click;
             // 
             // btnusuario
             // 
-            btnusuario.BackColor = SystemColors.ActiveCaption;
+            btnusuario.BackColor = Color.Goldenrod;
             btnusuario.Cursor = Cursors.Hand;
-            btnusuario.Dock = DockStyle.Top;
-            btnusuario.Location = new Point(0, 0);
+            btnusuario.FlatAppearance.BorderSize = 0;
+            btnusuario.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btnusuario.FlatStyle = FlatStyle.Flat;
+            btnusuario.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btnusuario.ForeColor = SystemColors.ButtonFace;
+            btnusuario.Location = new Point(6, 7);
+            btnusuario.Margin = new Padding(5);
             btnusuario.Name = "btnusuario";
-            btnusuario.Size = new Size(160, 37);
+            btnusuario.Size = new Size(193, 37);
             btnusuario.TabIndex = 1;
             btnusuario.Text = "Usuarios";
             btnusuario.UseVisualStyleBackColor = false;
             btnusuario.Click += btnusuario_Click;
             // 
-            // panel2
+            // pnlsup
             // 
-            panel2.BackColor = Color.Navy;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(btnFechar);
-            panel2.Controls.Add(label7);
-            panel2.Cursor = Cursors.SizeAll;
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(793, 44);
-            panel2.TabIndex = 27;
+            pnlsup.BackColor = Color.Navy;
+            pnlsup.BorderStyle = BorderStyle.FixedSingle;
+            pnlsup.Controls.Add(btnFechar);
+            pnlsup.Controls.Add(label7);
+            pnlsup.Cursor = Cursors.SizeAll;
+            pnlsup.Dock = DockStyle.Top;
+            pnlsup.Location = new Point(0, 0);
+            pnlsup.Name = "pnlsup";
+            pnlsup.Size = new Size(793, 44);
+            pnlsup.TabIndex = 27;
+            pnlsup.MouseDown += pnlsup_MouseDown;
+            pnlsup.MouseMove += pnlsup_MouseMove;
+            pnlsup.MouseUp += pnlsup_MouseUp;
             // 
             // btnFechar
             // 
@@ -111,7 +116,7 @@
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnFechar.ForeColor = SystemColors.ButtonFace;
-            btnFechar.Location = new Point(746, 9);
+            btnFechar.Location = new Point(754, 9);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(29, 23);
             btnFechar.TabIndex = 25;
@@ -130,31 +135,76 @@
             label7.TabIndex = 25;
             label7.Text = "Menu";
             // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.Controls.Add(lblmsg);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            panel1.Location = new Point(0, 414);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(793, 36);
+            panel1.TabIndex = 28;
+            // 
+            // lblmsg
+            // 
+            lblmsg.AutoSize = true;
+            lblmsg.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblmsg.ForeColor = SystemColors.ActiveCaptionText;
+            lblmsg.Location = new Point(8, 11);
+            lblmsg.Name = "lblmsg";
+            lblmsg.Size = new Size(193, 15);
+            lblmsg.TabIndex = 26;
+            lblmsg.Text = "Usuario: Andre Marino Balera (Dev)";
+            // 
+            // btncomprar
+            // 
+            btncomprar.BackColor = Color.Goldenrod;
+            btncomprar.Cursor = Cursors.Hand;
+            btncomprar.FlatAppearance.BorderSize = 0;
+            btncomprar.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btncomprar.FlatStyle = FlatStyle.Flat;
+            btncomprar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btncomprar.ForeColor = SystemColors.ButtonFace;
+            btncomprar.Location = new Point(6, 90);
+            btncomprar.Margin = new Padding(5);
+            btncomprar.Name = "btncomprar";
+            btncomprar.Size = new Size(193, 37);
+            btncomprar.TabIndex = 3;
+            btncomprar.Text = "Comprar";
+            btncomprar.UseVisualStyleBackColor = false;
+            btncomprar.Click += btncomprar_Click_1;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(793, 450);
             Controls.Add(pnlateral);
-            Controls.Add(panel2);
+            Controls.Add(pnlsup);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
             pnlateral.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pnlsup.ResumeLayout(false);
+            pnlsup.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel pnlateral;
-        private Button button2;
-        private Button button1;
+        private Button btnprod;
         private Button btnusuario;
-        private Panel panel2;
+        private Panel pnlsup;
         private Button btnFechar;
         private Label label7;
+        private Panel panel1;
+        private Label lblmsg;
+        private Button btncomprar;
     }
 }

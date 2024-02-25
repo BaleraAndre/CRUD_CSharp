@@ -11,7 +11,7 @@ namespace Teste
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Teste.forms.Menu.FormMenu());
+            Application.Run(new Teste.FormLogin());
 
         }
     }

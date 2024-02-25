@@ -12,11 +12,12 @@ namespace Teste.forms.Product
 {
     public partial class FormProduct : Form
     {
-        private Point _dragStartPoint;
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
         public FormProduct()
         {
             InitializeComponent();
-            InitializeDragForm();
             gridload();
         }
 
@@ -28,43 +29,6 @@ namespace Teste.forms.Product
                 dgvprod.Rows.Add(product.Id, product.Name, product.Description, product.Price, product.Quant, product.Invtype);
             }
         }
-        private void MainForm_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
-            {
-
-                _dragStartPoint = new Point(e.X, e.Y);
-            }
-        }
-
-        private void MainForm_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
-            {
-
-                int deltaX = e.X - _dragStartPoint.X;
-                int deltaY = e.Y - _dragStartPoint.Y;
-
-
-                this.Left += deltaX;
-                this.Top += deltaY;
-            }
-        }
-        private void InitializeDragForm()
-        {
-            this.MouseDown += MainForm_MouseDown;
-            this.MouseMove += MainForm_MouseMove;
-            this.MouseUp += MainForm_MouseUp;
-        }
-        private void MainForm_MouseUp(object sender, MouseEventArgs e)
-        {
-
-            _dragStartPoint = Point.Empty;
-        }
-
-
         private void btnfechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -92,6 +56,27 @@ namespace Teste.forms.Product
         private void btnFechar_Click_2(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlsup_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void pnlsup_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void pnlsup_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
         }
     }
 }

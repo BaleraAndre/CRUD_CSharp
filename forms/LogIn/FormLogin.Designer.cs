@@ -28,92 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            panel1 = new Panel();
-            button1 = new Button();
-            label5 = new Label();
+            txtuser = new TextBox();
+            txtpass = new TextBox();
             label3 = new Label();
             label4 = new Label();
-            btnEntrar = new Button();
-            panel1.SuspendLayout();
+            pnlsup = new Panel();
+            btnFechar = new Button();
+            label7 = new Label();
+            btnentrar = new Button();
+            label1 = new Label();
+            pnlsup.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 20.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label1.Location = new Point(180, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(80, 31);
-            label1.TabIndex = 0;
-            label1.Text = "Login";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(41, 40);
+            label2.Location = new Point(30, 76);
             label2.Name = "label2";
             label2.Size = new Size(353, 21);
             label2.TabIndex = 1;
             label2.Text = "_________________________________________________";
             // 
-            // textBox1
+            // txtuser
             // 
-            textBox1.Location = new Point(61, 106);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(305, 23);
-            textBox1.TabIndex = 2;
+            txtuser.Location = new Point(45, 150);
+            txtuser.Name = "txtuser";
+            txtuser.Size = new Size(305, 23);
+            txtuser.TabIndex = 2;
             // 
-            // textBox2
+            // txtpass
             // 
-            textBox2.Location = new Point(61, 168);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(305, 23);
-            textBox2.TabIndex = 3;
-            textBox2.UseSystemPasswordChar = true;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ControlLight;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(label5);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 297);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(433, 71);
-            panel1.TabIndex = 4;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(299, 20);
-            button1.Name = "button1";
-            button1.Size = new Size(129, 38);
-            button1.TabIndex = 8;
-            button1.Text = "Cadastra-se";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Light", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(147, 27);
-            label5.Name = "label5";
-            label5.Size = new Size(146, 21);
-            label5.TabIndex = 0;
-            label5.Text = "Não possui cadastro?";
+            txtpass.Location = new Point(45, 212);
+            txtpass.Name = "txtpass";
+            txtpass.Size = new Size(305, 23);
+            txtpass.TabIndex = 3;
+            txtpass.UseSystemPasswordChar = true;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label3.Location = new Point(61, 88);
+            label3.Location = new Point(45, 132);
             label3.Name = "label3";
             label3.Size = new Size(49, 15);
             label3.TabIndex = 5;
@@ -123,61 +80,116 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label4.Location = new Point(61, 150);
+            label4.Location = new Point(45, 194);
             label4.Name = "label4";
             label4.Size = new Size(41, 15);
             label4.TabIndex = 6;
             label4.Text = "Senha";
             // 
-            // btnEntrar
+            // pnlsup
             // 
-            btnEntrar.BackColor = Color.DodgerBlue;
-            btnEntrar.FlatAppearance.BorderColor = Color.Black;
-            btnEntrar.FlatAppearance.MouseOverBackColor = Color.LightSkyBlue;
-            btnEntrar.FlatStyle = FlatStyle.Flat;
-            btnEntrar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEntrar.ForeColor = SystemColors.ButtonFace;
-            btnEntrar.Location = new Point(61, 225);
-            btnEntrar.Name = "btnEntrar";
-            btnEntrar.Size = new Size(305, 37);
-            btnEntrar.TabIndex = 7;
-            btnEntrar.Text = "Logar";
-            btnEntrar.UseVisualStyleBackColor = false;
+            pnlsup.BackColor = Color.Navy;
+            pnlsup.BorderStyle = BorderStyle.FixedSingle;
+            pnlsup.Controls.Add(btnFechar);
+            pnlsup.Controls.Add(label7);
+            pnlsup.Cursor = Cursors.SizeAll;
+            pnlsup.Dock = DockStyle.Top;
+            pnlsup.Location = new Point(0, 0);
+            pnlsup.Name = "pnlsup";
+            pnlsup.Size = new Size(406, 44);
+            pnlsup.TabIndex = 37;
+            pnlsup.MouseDown += pnlsup_MouseDown;
+            pnlsup.MouseMove += pnlsup_MouseMove;
+            pnlsup.MouseUp += pnlsup_MouseUp;
+            // 
+            // btnFechar
+            // 
+            btnFechar.BackColor = Color.DarkBlue;
+            btnFechar.Cursor = Cursors.Hand;
+            btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnFechar.ForeColor = SystemColors.ButtonFace;
+            btnFechar.Location = new Point(364, 9);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(29, 23);
+            btnFechar.TabIndex = 25;
+            btnFechar.Text = "X";
+            btnFechar.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold);
+            label7.ForeColor = SystemColors.ButtonFace;
+            label7.Location = new Point(4, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(117, 25);
+            label7.TabIndex = 25;
+            label7.Text = "BEM VINDO";
+            // 
+            // btnentrar
+            // 
+            btnentrar.BackColor = Color.YellowGreen;
+            btnentrar.Cursor = Cursors.Hand;
+            btnentrar.FlatAppearance.BorderSize = 0;
+            btnentrar.FlatStyle = FlatStyle.Flat;
+            btnentrar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnentrar.ForeColor = SystemColors.ButtonFace;
+            btnentrar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnentrar.Location = new Point(45, 272);
+            btnentrar.Name = "btnentrar";
+            btnentrar.Size = new Size(305, 37);
+            btnentrar.TabIndex = 38;
+            btnentrar.Text = "Entrar";
+            btnentrar.UseVisualStyleBackColor = false;
+            btnentrar.Click += btnentrar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(163, 62);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 25);
+            label1.TabIndex = 26;
+            label1.Text = "Login";
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 368);
-            Controls.Add(btnEntrar);
+            ClientSize = new Size(406, 368);
+            Controls.Add(label1);
+            Controls.Add(pnlsup);
+            Controls.Add(btnentrar);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(panel1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtpass);
+            Controls.Add(txtuser);
             Controls.Add(label2);
-            Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Seja bem vindo !";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlsup.ResumeLayout(false);
+            pnlsup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Panel panel1;
+        private TextBox txtuser;
+        private TextBox txtpass;
         private Label label3;
         private Label label4;
-        private Button btnEntrar;
-        private Button button1;
-        private Label label5;
+        private Panel pnlsup;
+        private Button btnFechar;
+        private Label label7;
+        private Button btnentrar;
+        private Label label1;
     }
 }

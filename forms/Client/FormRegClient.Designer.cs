@@ -55,16 +55,17 @@
             label2 = new Label();
             label4 = new Label();
             label3 = new Label();
-            panel2 = new Panel();
+            pnlsup = new Panel();
             btnFechar = new Button();
             label7 = new Label();
             btnok = new Button();
             button1 = new Button();
+            btndeletar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtcarteira).BeginInit();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
-            panel2.SuspendLayout();
+            pnlsup.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -342,18 +343,21 @@
             label3.Size = new Size(0, 25);
             label3.TabIndex = 15;
             // 
-            // panel2
+            // pnlsup
             // 
-            panel2.BackColor = Color.Navy;
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(btnFechar);
-            panel2.Controls.Add(label7);
-            panel2.Cursor = Cursors.SizeAll;
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(736, 44);
-            panel2.TabIndex = 24;
+            pnlsup.BackColor = Color.Navy;
+            pnlsup.BorderStyle = BorderStyle.FixedSingle;
+            pnlsup.Controls.Add(btnFechar);
+            pnlsup.Controls.Add(label7);
+            pnlsup.Cursor = Cursors.SizeAll;
+            pnlsup.Dock = DockStyle.Top;
+            pnlsup.Location = new Point(0, 0);
+            pnlsup.Name = "pnlsup";
+            pnlsup.Size = new Size(736, 44);
+            pnlsup.TabIndex = 24;
+            pnlsup.MouseDown += pnlsup_MouseDown;
+            pnlsup.MouseMove += pnlsup_MouseMove;
+            pnlsup.MouseUp += pnlsup_MouseUp;
             // 
             // btnFechar
             // 
@@ -416,16 +420,33 @@
             button1.Text = "Voltar";
             button1.UseVisualStyleBackColor = false;
             // 
+            // btndeletar
+            // 
+            btndeletar.BackColor = Color.DarkOrange;
+            btndeletar.Cursor = Cursors.Hand;
+            btndeletar.FlatAppearance.BorderSize = 0;
+            btndeletar.FlatStyle = FlatStyle.Flat;
+            btndeletar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndeletar.ForeColor = SystemColors.ButtonFace;
+            btndeletar.ImageAlign = ContentAlignment.MiddleLeft;
+            btndeletar.Location = new Point(285, 358);
+            btndeletar.Name = "btndeletar";
+            btndeletar.Size = new Size(142, 37);
+            btndeletar.TabIndex = 26;
+            btndeletar.Text = "Deletar";
+            btndeletar.UseVisualStyleBackColor = false;
+            // 
             // FormRegClient
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(736, 416);
+            Controls.Add(btndeletar);
             Controls.Add(button1);
             Controls.Add(btnok);
             Controls.Add(panel1);
-            Controls.Add(panel2);
+            Controls.Add(pnlsup);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormRegClient";
             StartPosition = FormStartPosition.CenterScreen;
@@ -437,8 +458,8 @@
             panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pnlsup.ResumeLayout(false);
+            pnlsup.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -460,7 +481,7 @@
         private Label label4;
         private Label label3;
         private Button btnok;
-        private Panel panel2;
+        private Panel pnlsup;
         private Button btnFechar;
         private Label label7;
         private Panel panel4;
@@ -476,5 +497,6 @@
         private ComboBox cbType;
         private CheckBox cbadm;
         private Button button1;
+        private Button btndeletar;
     }
 }

@@ -4,58 +4,31 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teste.entities;
 
 namespace Teste.forms.Menu
 {
     public partial class FormMenu : Form
     {
-        private Point _dragStartPoint;
-        public FormMenu()
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+        public FormMenu(Access access)
         {
             InitializeComponent();
-            InitializeDragForm();
-        }
-
-        private void InitializeDragForm()
-        {
-
-            this.MouseDown += MainForm_MouseDown;
-            this.MouseMove += MainForm_MouseMove;
-            this.MouseUp += MainForm_MouseUp;
-        }
-
-        private void MainForm_MouseDown(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
+            if (!access.IsAdmin)
             {
-
-                _dragStartPoint = new Point(e.X, e.Y);
+                btnusuario.Enabled = false;
+                btnprod.Enabled = false;
+                lblmsg.Text = $"Bem vindo, ${access.User} ! (Usuario)";
             }
-        }
+            else { lblmsg.Text = $"Bem vindo, ${access.User} ! (ADM)"; };
+            
 
-        private void MainForm_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            if (e.Button == MouseButtons.Left)
-            {
-
-                int deltaX = e.X - _dragStartPoint.X;
-                int deltaY = e.Y - _dragStartPoint.Y;
-
-
-                this.Left += deltaX;
-                this.Top += deltaY;
-            }
-        }
-
-        private void MainForm_MouseUp(object sender, MouseEventArgs e)
-        {
-
-            _dragStartPoint = Point.Empty;
         }
 
         private void btnusuario_Click(object sender, EventArgs e)
@@ -73,6 +46,38 @@ namespace Teste.forms.Menu
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btncomprar_Click(object sender, EventArgs e)
+        {
+           // forms.Product.FormBUY form = new Product.FormBUY();
+            //form.ShowDialog();
+        }
+
+        private void pnlsup_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void pnlsup_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void pnlsup_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void btncomprar_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

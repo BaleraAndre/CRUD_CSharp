@@ -36,6 +36,18 @@ namespace Teste.DataAccessObject.Client
 
 
         }
+
+        public static async Task DeleteClientAsync(int clientId)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string deleteQuery = "DELETE FROM clients WHERE id = @ClientId";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(deleteQuery, connection))
+            {
+                command.Parameters.AddWithValue("@ClientId", clientId);
+                await command.ExecuteNonQueryAsync();
+            }
+        }
         public static async Task<List<entities.Client>> GetAllAsync()
         {
             List<entities.Client> clients = new List<entities.Client>();
@@ -96,27 +108,7 @@ namespace Teste.DataAccessObject.Client
             }
         }
 
-        public async Task DeleteClientAsync(int clientId)
-        {
-            try
-            {
-                NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
-                string deleteQuery = "DELETE FROM clients WHERE id = @ClientId";
-
-                using (NpgsqlCommand command = new NpgsqlCommand(deleteQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@ClientId", clientId);
-
-                    await command.ExecuteNonQueryAsync();
-                }
-
-                MessageBox.Show("Cliente deletado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao deletar o cliente: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private static async Task IsValidAsync(entities.Client client)
         {

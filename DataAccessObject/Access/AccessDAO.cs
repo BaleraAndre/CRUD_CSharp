@@ -17,7 +17,7 @@ namespace Teste.DataAccessObject.Access
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
 
             int idInserido = 0;
-            access = Crip.EncryptAccessAsync(access);
+            access.Password = Crip.EncryptAccessAsync(access.Password);
             string insertQuery = "INSERT INTO access (username, password, isAdmin) VALUES (@User, @Password, @IsAdmin) RETURNING id";
 
             using (NpgsqlCommand command = new NpgsqlCommand(insertQuery, connection))
@@ -32,6 +32,67 @@ namespace Teste.DataAccessObject.Access
             }
             return idInserido;
 
+        }
+
+        public static async Task<List<entities.Access>> GetAllAsync()
+        {
+            List<entities.Access> accessList = new List<entities.Access>();
+
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+
+            string selectQuery = "SELECT id, username, password, isAdmin FROM access";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
+            {
+                using (NpgsqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        entities.Access access = new entities.Access
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            User = reader.GetString(reader.GetOrdinal("username")),
+                            Password = reader.GetString(reader.GetOrdinal("password")),
+                            IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"))
+                        };
+
+                        accessList.Add(access);
+                    }
+                }
+            }
+
+            return accessList;
+        }
+
+        public static async Task<entities.Access> GetByUsernameAsync(string username)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string selectQuery = "SELECT id, username, password, isAdmin FROM access WHERE username = @Username";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Username", username);
+
+                using (NpgsqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        entities.Access access = new entities.Access
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            User = reader.GetString(reader.GetOrdinal("username")),
+                            Password = reader.GetString(reader.GetOrdinal("password")),
+                            IsAdmin = reader.GetBoolean(reader.GetOrdinal("isAdmin"))
+                        };
+
+                        return access;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
         }
 
         public async Task DeleteAccessAsync(int accessId)
