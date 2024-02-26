@@ -15,4 +15,9 @@ Aplicação desktop para gerenciamento de clientes , produtos , compras/vendas.
 
 
 ![Login](./Login.png)
+![Menu](./menu.png)
+![Lista de Usuários](./listausuarios.png)
+![Cadastro de Usuário](./cadusuario.png)
+![Lista de Produtos](./listaprod.png)
+![Cadastro de Produtos](./cadprod.png)
 
