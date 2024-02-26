@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlateral = new Panel();
+            btncomprar = new Button();
             btnprod = new Button();
             btnusuario = new Button();
             pnlsup = new Panel();
@@ -36,7 +37,7 @@
             label7 = new Label();
             panel1 = new Panel();
             lblmsg = new Label();
-            btncomprar = new Button();
+            btnmeuperfil = new Button();
             pnlateral.SuspendLayout();
             pnlsup.SuspendLayout();
             panel1.SuspendLayout();
@@ -45,6 +46,7 @@
             // pnlateral
             // 
             pnlateral.BackColor = Color.FromArgb(224, 224, 224);
+            pnlateral.Controls.Add(btnmeuperfil);
             pnlateral.Controls.Add(btncomprar);
             pnlateral.Controls.Add(btnprod);
             pnlateral.Controls.Add(btnusuario);
@@ -54,6 +56,24 @@
             pnlateral.Padding = new Padding(2);
             pnlateral.Size = new Size(206, 370);
             pnlateral.TabIndex = 0;
+            // 
+            // btncomprar
+            // 
+            btncomprar.BackColor = Color.Goldenrod;
+            btncomprar.Cursor = Cursors.Hand;
+            btncomprar.FlatAppearance.BorderSize = 0;
+            btncomprar.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btncomprar.FlatStyle = FlatStyle.Flat;
+            btncomprar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btncomprar.ForeColor = SystemColors.ButtonFace;
+            btncomprar.Location = new Point(6, 90);
+            btncomprar.Margin = new Padding(5);
+            btncomprar.Name = "btncomprar";
+            btncomprar.Size = new Size(193, 37);
+            btncomprar.TabIndex = 3;
+            btncomprar.Text = "Comprar";
+            btncomprar.UseVisualStyleBackColor = false;
+            btncomprar.Click += btncomprar_Click_1;
             // 
             // btnprod
             // 
@@ -157,23 +177,23 @@
             lblmsg.TabIndex = 26;
             lblmsg.Text = "Usuario: Andre Marino Balera (Dev)";
             // 
-            // btncomprar
+            // btnmeuperfil
             // 
-            btncomprar.BackColor = Color.Goldenrod;
-            btncomprar.Cursor = Cursors.Hand;
-            btncomprar.FlatAppearance.BorderSize = 0;
-            btncomprar.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
-            btncomprar.FlatStyle = FlatStyle.Flat;
-            btncomprar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btncomprar.ForeColor = SystemColors.ButtonFace;
-            btncomprar.Location = new Point(6, 90);
-            btncomprar.Margin = new Padding(5);
-            btncomprar.Name = "btncomprar";
-            btncomprar.Size = new Size(193, 37);
-            btncomprar.TabIndex = 3;
-            btncomprar.Text = "Comprar";
-            btncomprar.UseVisualStyleBackColor = false;
-            btncomprar.Click += btncomprar_Click_1;
+            btnmeuperfil.BackColor = Color.Goldenrod;
+            btnmeuperfil.Cursor = Cursors.Hand;
+            btnmeuperfil.FlatAppearance.BorderSize = 0;
+            btnmeuperfil.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btnmeuperfil.FlatStyle = FlatStyle.Flat;
+            btnmeuperfil.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btnmeuperfil.ForeColor = SystemColors.ButtonFace;
+            btnmeuperfil.Location = new Point(6, 133);
+            btnmeuperfil.Margin = new Padding(5);
+            btnmeuperfil.Name = "btnmeuperfil";
+            btnmeuperfil.Size = new Size(193, 37);
+            btnmeuperfil.TabIndex = 4;
+            btnmeuperfil.Text = "Minha carteira";
+            btnmeuperfil.UseVisualStyleBackColor = false;
+            btnmeuperfil.Click += btnmeuperfil_Click;
             // 
             // FormMenu
             // 
@@ -206,5 +226,6 @@
         private Panel panel1;
         private Label lblmsg;
         private Button btncomprar;
+        private Button btnmeuperfil;
     }
 }

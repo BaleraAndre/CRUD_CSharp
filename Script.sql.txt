@@ -14,7 +14,8 @@ CREATE TABLE if not exists products (
 
 CREATE TABLE Compra (
     Id SERIAL PRIMARY KEY,
-    ClienteId INT NOT NULL
+    ClienteId INT NOT NULL,
+compra_aprovada BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE ItemDaCompra (

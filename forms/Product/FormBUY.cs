@@ -14,10 +14,12 @@ namespace Teste.forms.Product
 {
     public partial class FormBUY : Form
     {
+        private int _cliid;
         public FormBUY(entities.Client client)
         {
             InitializeComponent();
             gridload(client);
+            _cliid = client.Id;
         }
 
         private async void gridload(entities.Client client)
@@ -35,7 +37,7 @@ namespace Teste.forms.Product
             this.Close();
         }
 
-        private void btnok_Click(object sender, EventArgs e)
+        private async void btnok_Click(object sender, EventArgs e)
         {
             if (nudquant.Value <= 0)
             {
@@ -56,6 +58,21 @@ namespace Teste.forms.Product
                 MessageBox.Show("Quantidade indisponivel", "Erro", MessageBoxButtons.OK);
                 return;
             }
+
+            entities.Compra compra = new entities.Compra();
+            compra.ClienteId = _cliid;
+           
+            entities.ItemDaCompra itemDaCompra = new entities.ItemDaCompra();
+            itemDaCompra.Quantidade = (int)nudquant.Value;
+            itemDaCompra.ProdutoId = product.Id;
+            itemDaCompra.ValorPagoPorUnidade = (decimal)product.Price;
+            compra.ItemDaCompras.Add(itemDaCompra);
+
+
+            await DataAccessObject.Purchase.purchaseDAO.InserirCompraAsync(compra);
+            MessageBox.Show("O pedido foi concluído. Aguarde a aprovação.", "Pedido Concluído", MessageBoxButtons.OK);
+            await DataAccessObject.Product.ProductDAO.UpdateProductQuantityAsync(product.Id,itemDaCompra.Quantidade);
+
 
 
         }

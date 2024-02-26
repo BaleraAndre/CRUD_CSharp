@@ -59,6 +59,7 @@ namespace Teste.DataAccessObject.Purchase
                     {
                         Id = Convert.ToInt32(reader["Id"]),
                         ClienteId = Convert.ToInt32(reader["ClienteId"]),
+                        Compra_aprovada = Convert.ToBoolean(reader["compra_aprovada"]) ,
                         ItemDaCompras = new List<ItemDaCompra>()
                     };
 

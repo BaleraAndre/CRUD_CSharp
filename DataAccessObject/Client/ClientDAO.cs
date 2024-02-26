@@ -174,7 +174,20 @@ namespace Teste.DataAccessObject.Client
                 await command.ExecuteNonQueryAsync();
             }
 
+        }
 
+        public static async Task SubtractFromWalletAsync(int clientId, float amountToSubtract)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string updateQuery = "UPDATE clients SET wallet = wallet - @AmountToSubtract WHERE id = @ClientId";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@AmountToSubtract", amountToSubtract);
+                command.Parameters.AddWithValue("@ClientId", clientId);
+
+                await command.ExecuteNonQueryAsync();
+            }
         }
 
 
@@ -205,8 +218,6 @@ namespace Teste.DataAccessObject.Client
             {
                 throw new InvalidEntityException(typeof(entities.Access), "Forneça um telefone para contato");
             }
-
-
 
             if (client.Wallet <= 0)
             {

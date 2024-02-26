@@ -14,7 +14,8 @@ namespace Teste.forms.Client
 {
     public partial class FormRegClient : Form
     {
-       
+
+        private int idcli;
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -33,6 +34,7 @@ namespace Teste.forms.Client
                 pnlaccess.Visible = false;
                 txtcarteira.ReadOnly = true;
                 btndeletar.Visible = false;
+                idcli = client.Id;
             }
             else
             {
@@ -45,11 +47,6 @@ namespace Teste.forms.Client
         private void btnfechar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnnovo_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnok_Click_1(object sender, EventArgs e)
@@ -126,8 +123,11 @@ namespace Teste.forms.Client
 
         private void btndepositar_Click(object sender, EventArgs e)
         {
-            double value = (double)nuddepositar.Value;
-           // DataAccessObject.Client.ClientDAO.AddToWalletAsync()
+            
+            float value = (float)nuddepositar.Value;
+            DataAccessObject.Client.ClientDAO.AddToWalletAsync(idcli, value);
+            MessageBox.Show("Depósito realizado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
     }
 }

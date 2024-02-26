@@ -12,6 +12,8 @@ namespace Teste.entities
 
         public int ClienteId { get; set; }
 
+        public bool Compra_aprovada {  get; set; }
+
         public List<ItemDaCompra> ItemDaCompras { get; set; } = new List<ItemDaCompra>();
 
 

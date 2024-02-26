@@ -27,8 +27,8 @@ namespace Teste.forms.Menu
                 btnprod.Visible = false;
                 lblmsg.Text = $"Bem vindo, ${access.User} ! (Usuario)";
             }
-            else 
-            { 
+            else
+            {
                 lblmsg.Text = $"Bem vindo, ${access.User} ! (ADM)";
                 btncomprar.Visible = false;
             };
@@ -36,7 +36,7 @@ namespace Teste.forms.Menu
             cli = DataAccessObject.Client.ClientDAO.GetByAccessIdAsync(access.Id).Result;
 
         }
-        
+
         private void btnusuario_Click(object sender, EventArgs e)
         {
             forms.User.FormUser form = new User.FormUser();
@@ -78,6 +78,12 @@ namespace Teste.forms.Menu
         private void btncomprar_Click_1(object sender, EventArgs e)
         {
             forms.Product.FormBUY form = new Product.FormBUY(cli);
+            form.ShowDialog();
+        }
+
+        private void btnmeuperfil_Click(object sender, EventArgs e)
+        {
+            forms.Client.FormRegClient form = new Client.FormRegClient(cli);
             form.ShowDialog();
         }
     }

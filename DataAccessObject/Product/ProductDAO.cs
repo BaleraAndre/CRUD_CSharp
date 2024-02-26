@@ -123,9 +123,40 @@ namespace Teste.DataAccessObject.Product
                 }
             }
 
-
-
             return product;
+        }
+
+        public static async Task UpdateProductQuantityAsync(int productId, int quantityToSubtract)
+        {
+            int currentQuantity = await GetProductQuantityAsync(productId);
+
+            int newQuantity = currentQuantity - quantityToSubtract;
+
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string updateQuery = "UPDATE products SET quant = @Quantity WHERE id = @ProductId";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Quantity", newQuantity);
+                command.Parameters.AddWithValue("@ProductId", productId);
+
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+
+        private static async Task<int> GetProductQuantityAsync(int productId)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string selectQuery = "SELECT quant FROM products WHERE id = @ProductId";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
+            {
+                command.Parameters.AddWithValue("@ProductId", productId);
+
+                object result = await command.ExecuteScalarAsync();
+                int currentQuantity = Convert.ToInt32(result);
+                return currentQuantity;
+            }
         }
 
         private static void IsValid(entities.Product product)
