@@ -5,13 +5,15 @@
 # :computer:
 
 
-Aplicação desktop para gerenciamento de clientes , produtos , compras/vendas.
+Aplicação desktop com dois niveis de acesso para gerenciamento de clientes , produtos , compras/vendas.
 
 ### 🖥️ Tecnologias e Ferramentas 
 <p align="left">
 <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" title = "CSHARP"/>
 <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title = "POSTGRESQL"/>
 </p>
+
+[Link para o script SQL](./Script.sql.txt)
 
 
 ![Login](./Login.png)
