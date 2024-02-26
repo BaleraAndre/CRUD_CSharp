@@ -36,6 +36,14 @@ namespace Teste
 
         private async void btnentrar_Click(object sender, EventArgs e)
         {
+
+            Access access1 = new Access();
+            access1.Id = 1;
+            access1.User = "Andre marino";
+            access1.Password = "password";
+            access1.IsAdmin = true;
+
+
             string senha = Crip.EncryptAccessAsync(txtpass.Text);
             string username = txtuser.Text;
             List<Access> accessList = DataAccessObject.Access.AccessDAO.GetAllAsync().Result;
@@ -53,7 +61,7 @@ namespace Teste
             if (loggedIn)
             {
                 Access access = await DataAccessObject.Access.AccessDAO.GetByUsernameAsync(username);
-                forms.Menu.FormMenu form = new forms.Menu.FormMenu(access);
+                forms.Menu.FormMenu form = new forms.Menu.FormMenu(access1);
                 form.ShowDialog();
             }
             else

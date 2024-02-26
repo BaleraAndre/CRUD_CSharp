@@ -214,6 +214,7 @@
             btnok.TabIndex = 36;
             btnok.Text = "Novo";
             btnok.UseVisualStyleBackColor = false;
+            btnok.Click += btnok_Click;
             // 
             // button1
             // 

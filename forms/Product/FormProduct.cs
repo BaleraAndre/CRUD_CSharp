@@ -78,5 +78,11 @@ namespace Teste.forms.Product
         {
             dragging = false;
         }
+
+        private void btnok_Click(object sender, EventArgs e)
+        {
+            forms.Product.FormRegProduct form = new FormRegProduct();
+            form.ShowDialog();
+        }
     }
 }
