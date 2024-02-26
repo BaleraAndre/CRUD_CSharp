@@ -47,7 +47,8 @@ namespace Teste.forms.User
 
         private void btnnovo_Click(object sender, EventArgs e)
         {
-            forms.Client.FormRegClient form = new Client.FormRegClient();
+            entities.Client client = null;
+            forms.Client.FormRegClient form = new Client.FormRegClient(client);
             form.ShowDialog();
             dgvUser.Rows.Clear();
             Gridload();
@@ -83,11 +84,29 @@ namespace Teste.forms.User
 
         private void btnok_Click(object sender, EventArgs e)
         {
-            forms.Client.FormRegClient form = new Client.FormRegClient();
+            entities.Client client = null;
+            forms.Client.FormRegClient form = new Client.FormRegClient(client);
             form.ShowDialog();
             dgvUser.Rows.Clear();
             Gridload();
 
+        }
+
+        private void dgvUser_DoubleClick(object sender, EventArgs e)
+        {
+            entities.Client client = new entities.Client();
+            client.Id = (int)dgvUser.SelectedRows[0].Cells[0].Value;
+            client.Name = dgvUser.SelectedRows[0].Cells[1].Value.ToString();
+            client.Phone = dgvUser.SelectedRows[0].Cells[2].Value.ToString();
+            client.Email = dgvUser.SelectedRows[0].Cells[3].Value.ToString();
+            client.Gender = dgvUser.SelectedRows[0].Cells[4].Value.ToString();
+            client.Wallet = (float)dgvUser.SelectedRows[0].Cells[5].Value;
+            client.Type = (enu.InvType.investorType)dgvUser.SelectedRows[0].Cells[6].Value;
+
+            forms.Client.FormRegClient form = new Client.FormRegClient(client);
+            form.ShowDialog();
+            dgvUser.Rows.Clear();
+            Gridload();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Teste.entities
 {
-    internal class Compra
+    public class Compra
     {
         public int Id { get; set; }
 
@@ -19,7 +19,7 @@ namespace Teste.entities
 
     }
 
-    class ItemDaCompra 
+    public class ItemDaCompra 
     {
         public int Id { get; set; }
 

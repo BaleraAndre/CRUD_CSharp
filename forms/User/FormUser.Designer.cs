@@ -89,6 +89,7 @@
             dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUser.Size = new Size(776, 342);
             dgvUser.TabIndex = 0;
+            dgvUser.DoubleClick += dgvUser_DoubleClick;
             // 
             // ID
             // 

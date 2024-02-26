@@ -44,6 +44,7 @@
             panel2 = new Panel();
             button3 = new Button();
             btnok = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtquant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtvalor).BeginInit();
@@ -109,7 +110,9 @@
             // 
             // txtvalor
             // 
+            txtvalor.DecimalPlaces = 2;
             txtvalor.Location = new Point(118, 147);
+            txtvalor.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             txtvalor.Name = "txtvalor";
             txtvalor.Size = new Size(126, 23);
             txtvalor.TabIndex = 27;
@@ -185,9 +188,9 @@
             label7.ForeColor = SystemColors.ButtonFace;
             label7.Location = new Point(4, 9);
             label7.Name = "label7";
-            label7.Size = new Size(176, 25);
+            label7.Size = new Size(188, 25);
             label7.TabIndex = 25;
-            label7.Text = "Cadastro de cliente";
+            label7.Text = "Cadastro de produto";
             // 
             // panel2
             // 
@@ -234,12 +237,29 @@
             btnok.Text = "Salvar";
             btnok.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Goldenrod;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(328, 349);
+            button1.Name = "button1";
+            button1.Size = new Size(142, 37);
+            button1.TabIndex = 32;
+            button1.Text = "Deletar";
+            button1.UseVisualStyleBackColor = false;
+            // 
             // FormRegProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(772, 396);
+            Controls.Add(button1);
             Controls.Add(button3);
             Controls.Add(btnok);
             Controls.Add(panel2);
@@ -274,5 +294,6 @@
         private Panel panel2;
         private Button button3;
         private Button btnok;
+        private Button button1;
     }
 }

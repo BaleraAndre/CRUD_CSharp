@@ -36,8 +36,7 @@ namespace Teste.forms.Product
 
         private void btnnovo_Click(object sender, EventArgs e)
         {
-            forms.Client.FormRegClient form = new Client.FormRegClient();
-            form.ShowDialog();
+            
         }
 
         private void btnfechar_Click_1(object sender, EventArgs e)

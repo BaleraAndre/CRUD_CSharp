@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgvprod = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
@@ -54,15 +54,15 @@
             dgvprod.AllowUserToDeleteRows = false;
             dgvprod.AllowUserToResizeColumns = false;
             dgvprod.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new Padding(5);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvprod.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new Padding(5);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvprod.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvprod.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvprod.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, Descricao, Valor, quant, Perfil });
             dgvprod.Dock = DockStyle.Bottom;
@@ -71,10 +71,10 @@
             dgvprod.Name = "dgvprod";
             dgvprod.ReadOnly = true;
             dgvprod.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dgvprod.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dgvprod.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvprod.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvprod.Size = new Size(800, 353);
             dgvprod.TabIndex = 27;
@@ -193,6 +193,7 @@
             btnok.TabIndex = 35;
             btnok.Text = "Comprar";
             btnok.UseVisualStyleBackColor = false;
+            btnok.Click += btnok_Click;
             // 
             // FormBUY
             // 

@@ -41,13 +41,13 @@ namespace Teste
             access1.Id = 1;
             access1.User = "Andre marino";
             access1.Password = "password";
-            access1.IsAdmin = true;
+            access1.IsAdmin = false;
 
-
-            string senha = Crip.EncryptAccessAsync(txtpass.Text);
+            bool loggedIn = true;
+           /* string senha = Crip.EncryptAccessAsync(txtpass.Text);
             string username = txtuser.Text;
             List<Access> accessList = DataAccessObject.Access.AccessDAO.GetAllAsync().Result;
-            bool loggedIn = true;
+            
 
             foreach (Access access in accessList)
             {
@@ -56,11 +56,11 @@ namespace Teste
                     loggedIn = true;
                     break;
                 }
-            }
+            }*/
 
             if (loggedIn)
             {
-                Access access = await DataAccessObject.Access.AccessDAO.GetByUsernameAsync(username);
+               // Access access = await DataAccessObject.Access.AccessDAO.GetByUsernameAsync(username);
                 forms.Menu.FormMenu form = new forms.Menu.FormMenu(access1);
                 form.ShowDialog();
             }
@@ -68,6 +68,11 @@ namespace Teste
             {
                 MessageBox.Show("Senha ou usuário inválido", "Erro de Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

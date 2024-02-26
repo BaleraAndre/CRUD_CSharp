@@ -1,9 +1,13 @@
 ﻿using Npgsql;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
+using Teste.entities;
 using Teste.Errors;
 
 namespace Teste.DataAccessObject.Client
@@ -33,8 +37,46 @@ namespace Teste.DataAccessObject.Client
 
                 connection.Close();
             }
+        }
 
+        public static async Task<entities.Client> GetByNameAsync(string name)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string selectQuery = "SELECT * FROM clients WHERE name = @Name";
 
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Name", name);
+
+                NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+
+                if (await reader.ReadAsync())
+                {
+                    entities.Client client = new entities.Client
+                    {
+                        Id = Convert.ToInt32(reader["id"]),
+                        Name = reader["name"].ToString(),
+                        Email = reader["email"].ToString(),
+                        Cpf = reader["cpf"].ToString(),
+                        Gender = reader["gender"].ToString(),
+                        Phone = reader["phone"].ToString(),
+                        AccessId = Convert.ToInt32(reader["access_id"]),
+                        Wallet = float.Parse(reader["wallet"].ToString()),
+                        Type = (enu.InvType.investorType)(reader["investor_type"])
+                    };
+
+                    reader.Close();
+                    connection.Close();
+
+                    return client;
+                }
+                else
+                {
+                    reader.Close();
+                    connection.Close();
+                    return null;
+                }
+            }
         }
 
         public static async Task DeleteClientAsync(int clientId)
@@ -79,36 +121,63 @@ namespace Teste.DataAccessObject.Client
 
                 reader.Close();
             }
-
             connection.Close();
-
             return clients;
         }
 
-        public async Task AddToWalletAsync(int clientId, float amountToAdd)
+        public static async Task<entities.Client> GetByAccessIdAsync(int accessId)
         {
-            try
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string selectQuery = "SELECT * FROM clients WHERE access_id = @AccessId";
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
             {
-                NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
-                string updateQuery = "UPDATE clients SET wallet = wallet + @AmountToAdd WHERE id = @ClientId";
-
-                using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+                command.Parameters.AddWithValue("@AccessId", accessId);
+                NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
                 {
-                    command.Parameters.AddWithValue("@AmountToAdd", amountToAdd);
-                    command.Parameters.AddWithValue("@ClientId", clientId);
+                    entities.Client client = new entities.Client
+                    {
+                        Id = Convert.ToInt32(reader["id"]),
+                        Name = reader["name"].ToString(),
+                        Email = reader["email"].ToString(),
+                        Cpf = reader["cpf"].ToString(),
+                        Gender = reader["gender"].ToString(),
+                        Phone = reader["phone"].ToString(),
+                        AccessId = Convert.ToInt32(reader["access_id"]),
+                        Wallet = float.Parse(reader["wallet"].ToString()),
+                        Type = (enu.InvType.investorType)(reader["investor_type"])
+                    };
+                    reader.Close();
+                    connection.Close();
 
-                    await command.ExecuteNonQueryAsync();
+                    return client;
                 }
-
-                MessageBox.Show("Saldo adicionado à carteira do cliente com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao adicionar saldo à carteira do cliente: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    reader.Close();
+                    connection.Close();
+                    return null;
+                }
             }
         }
+        public static async Task AddToWalletAsync(int clientId, float amountToAdd)
+        {
 
-       
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string updateQuery = "UPDATE clients SET wallet = wallet + @AmountToAdd WHERE id = @ClientId";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@AmountToAdd", amountToAdd);
+                command.Parameters.AddWithValue("@ClientId", clientId);
+
+                await command.ExecuteNonQueryAsync();
+            }
+
+
+        }
+
+
 
         private static async Task IsValidAsync(entities.Client client)
         {

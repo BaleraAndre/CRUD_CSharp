@@ -117,6 +117,7 @@
             btnFechar.TabIndex = 25;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = false;
+            btnFechar.Click += btnFechar_Click;
             // 
             // label7
             // 

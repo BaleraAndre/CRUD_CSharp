@@ -1,23 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teste.entities;
 
 namespace Teste.forms.Client
 {
     public partial class FormRegClient : Form
     {
+       
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
-        public FormRegClient()
+        public FormRegClient(entities.Client client)
         {
+            
             InitializeComponent();
+            if (client != null)
+            {
+                txtcarteira.Value = (decimal)client.Wallet;
+                txtNome.Text = client.Name;
+                txtemail.Text = client.Email;
+                txtcpf.Text = client.Cpf;
+                txttelefone.Text = client.Phone;
+                cbType.Text = client.Type.ToString();
+                pnlaccess.Visible = false;
+                txtcarteira.ReadOnly = true;
+                btndeletar.Visible = false;
+            }
+            else
+            {
+                pnldepositar.Visible = false;
+            }
 
         }
 
@@ -29,8 +49,7 @@ namespace Teste.forms.Client
 
         private void btnnovo_Click(object sender, EventArgs e)
         {
-            forms.Client.FormRegClient form = new Client.FormRegClient();
-            form.ShowDialog();
+
         }
 
         private void btnok_Click_1(object sender, EventArgs e)
@@ -70,18 +89,13 @@ namespace Teste.forms.Client
             client.Email = txtemail.Text;
             client.Cpf = txtcpf.Text;
             client.AccessId = accessid;
-            if (rbmasc.Checked) { client.Gender = "Masculino"; }
-            else if (rbfem.Checked) { client.Gender = "Feminino"; }
-            else { client.Gender = "Outro"; }
+            if (rbmasc.Checked) { client.Gender = "Male"; }
+            else if (rbfem.Checked) { client.Gender = "Female"; }
+            else { client.Gender = "Other"; }
 
 
-            DataAccessObject.Client.ClientDAO.InsertClientAsync(client);
+            var result = DataAccessObject.Client.ClientDAO.InsertClientAsync(client);
             this.Close();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnFechar_Click_1(object sender, EventArgs e)
@@ -108,6 +122,12 @@ namespace Teste.forms.Client
                 Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
                 this.Location = Point.Add(dragFormPoint, new Size(dif));
             }
+        }
+
+        private void btndepositar_Click(object sender, EventArgs e)
+        {
+            double value = (double)nuddepositar.Value;
+           // DataAccessObject.Client.ClientDAO.AddToWalletAsync()
         }
     }
 }

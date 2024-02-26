@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using Teste.entities;
 using Teste.enu;
+using Teste.Errors;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Teste.DataAccessObject.Product
@@ -16,6 +17,7 @@ namespace Teste.DataAccessObject.Product
 
         public static async Task InsertProductAsync(entities.Product product)
         {
+            IsValid(product);
             int type = int.Parse(product.Invtype.ToString());
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
             string insertQuery = "INSERT INTO products (name, description, invtype, price, quant) VALUES (@Name, @Description, @Invtype, @Price ,@Quant)";
@@ -47,7 +49,7 @@ namespace Teste.DataAccessObject.Product
 
         public async Task UpdateProductAsync(entities.Product product)
         {
-
+            IsValid(product);
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
             string updateQuery = "UPDATE produtos SET name = @Name, description = @Description, category_id = @CategoryId, price = @Price WHERE id = @ProductId";
 
@@ -126,30 +128,27 @@ namespace Teste.DataAccessObject.Product
             return product;
         }
 
-        private async Task<bool> IsValidAsync(entities.Product product)
+        private static void IsValid(entities.Product product)
         {
 
             if (string.IsNullOrWhiteSpace(product.Name))
             {
-                MessageBox.Show("O nome do produto é inválido.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw new InvalidEntityException(typeof(entities.Product), "Forneça o nome");
+                ;
             }
 
             if (string.IsNullOrWhiteSpace(product.Description))
             {
-                MessageBox.Show("A descrição do produto é inválida.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw new InvalidEntityException(typeof(entities.Product), "Forneça a descrição");
             }
 
 
 
             if (product.Price <= 0)
             {
-                MessageBox.Show("O preço do produto deve ser maior que zero.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw new InvalidEntityException(typeof(entities.Product), "Forneça o preço");
             }
 
-            return true;
         }
     }
 }

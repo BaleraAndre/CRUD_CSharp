@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,20 +14,19 @@ namespace Teste.forms.Product
 {
     public partial class FormBUY : Form
     {
-        public FormBUY(Access access)
+        public FormBUY(entities.Client client)
         {
             InitializeComponent();
-            string tpe = access.Type.ToString();
-            gridload(access,tpe);
+            gridload(client);
         }
 
-        private async void gridload(Access access,string str)
+        private async void gridload(entities.Client client)
         {
             List<entities.Product> products = await DataAccessObject.Product.ProductDAO.GetAllAsync();
             foreach (entities.Product product in products)
             {
-                if(access.Type.ToString() == str)
-                dgvprod.Rows.Add(product.Id, product.Name, product.Description, product.Price, product.Quant, product.Invtype);
+                if (client.Type.ToString() == product.Invtype.ToString())
+                    dgvprod.Rows.Add(product.Id, product.Name, product.Description, product.Price, product.Quant, product.Invtype);
             }
         }
 
@@ -35,14 +35,13 @@ namespace Teste.forms.Product
             this.Close();
         }
 
-        private void btncomprar_Click(object sender, EventArgs e)
+        private void btnok_Click(object sender, EventArgs e)
         {
             if (nudquant.Value <= 0)
             {
                 MessageBox.Show("Informe a quantidade a ser comprada", "Erro", MessageBoxButtons.OK);
                 return;
             }
-            
             entities.Product product = new entities.Product();
 
             product.Id = (int)dgvprod.SelectedRows[0].Cells[0].Value;
@@ -60,5 +59,7 @@ namespace Teste.forms.Product
 
 
         }
+
+
     }
 }

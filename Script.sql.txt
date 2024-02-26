@@ -12,6 +12,19 @@ CREATE TABLE if not exists products (
     Quant INTEGER
 );
 
+CREATE TABLE Compra (
+    Id SERIAL PRIMARY KEY,
+    ClienteId INT NOT NULL
+);
+
+CREATE TABLE ItemDaCompra (
+    Id SERIAL PRIMARY KEY,
+    CompraId INT NOT NULL,
+    ProdutoId INT NOT NULL,
+    Quantidade INT NOT NULL,
+    ValorPagoPorUnidade DECIMAL NOT NULL,
+    FOREIGN KEY (CompraId) REFERENCES Compra(Id)
+);
 
 
 

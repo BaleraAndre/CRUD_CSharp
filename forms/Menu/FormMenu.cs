@@ -14,6 +14,7 @@ namespace Teste.forms.Menu
 {
     public partial class FormMenu : Form
     {
+        private entities.Client cli;
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
@@ -22,15 +23,20 @@ namespace Teste.forms.Menu
             InitializeComponent();
             if (!access.IsAdmin)
             {
-                btnusuario.Enabled = false;
-                btnprod.Enabled = false;
+                btnusuario.Visible = false;
+                btnprod.Visible = false;
                 lblmsg.Text = $"Bem vindo, ${access.User} ! (Usuario)";
             }
-            else { lblmsg.Text = $"Bem vindo, ${access.User} ! (ADM)"; };
-            
+            else 
+            { 
+                lblmsg.Text = $"Bem vindo, ${access.User} ! (ADM)";
+                btncomprar.Visible = false;
+            };
+
+            cli = DataAccessObject.Client.ClientDAO.GetByAccessIdAsync(access.Id).Result;
 
         }
-
+        
         private void btnusuario_Click(object sender, EventArgs e)
         {
             forms.User.FormUser form = new User.FormUser();
@@ -46,12 +52,6 @@ namespace Teste.forms.Menu
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btncomprar_Click(object sender, EventArgs e)
-        {
-           // forms.Product.FormBUY form = new Product.FormBUY();
-            //form.ShowDialog();
         }
 
         private void pnlsup_MouseDown(object sender, MouseEventArgs e)
@@ -77,7 +77,8 @@ namespace Teste.forms.Menu
 
         private void btncomprar_Click_1(object sender, EventArgs e)
         {
-
+            forms.Product.FormBUY form = new Product.FormBUY(cli);
+            form.ShowDialog();
         }
     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            pnlinfo = new Panel();
             label12 = new Label();
             cbType = new ComboBox();
             txtcarteira = new NumericUpDown();
             label11 = new Label();
-            panel4 = new Panel();
+            pnlaccess = new Panel();
             cbadm = new CheckBox();
             label10 = new Label();
             txtsenha = new TextBox();
@@ -61,36 +61,42 @@
             btnok = new Button();
             button1 = new Button();
             btndeletar = new Button();
-            panel1.SuspendLayout();
+            pnldepositar = new Panel();
+            label13 = new Label();
+            nuddepositar = new NumericUpDown();
+            btndepositar = new Button();
+            pnlinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtcarteira).BeginInit();
-            panel4.SuspendLayout();
+            pnlaccess.SuspendLayout();
             panel3.SuspendLayout();
             pnlsup.SuspendLayout();
+            pnldepositar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nuddepositar).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnlinfo
             // 
-            panel1.BackColor = SystemColors.ButtonHighlight;
-            panel1.Controls.Add(label12);
-            panel1.Controls.Add(cbType);
-            panel1.Controls.Add(txtcarteira);
-            panel1.Controls.Add(label11);
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(txttelefone);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtcpf);
-            panel1.Controls.Add(txtNome);
-            panel1.Controls.Add(txtemail);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Location = new Point(5, 65);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(728, 267);
-            panel1.TabIndex = 13;
+            pnlinfo.BackColor = SystemColors.ButtonHighlight;
+            pnlinfo.Controls.Add(label12);
+            pnlinfo.Controls.Add(cbType);
+            pnlinfo.Controls.Add(txtcarteira);
+            pnlinfo.Controls.Add(label11);
+            pnlinfo.Controls.Add(pnlaccess);
+            pnlinfo.Controls.Add(panel3);
+            pnlinfo.Controls.Add(txttelefone);
+            pnlinfo.Controls.Add(label6);
+            pnlinfo.Controls.Add(label5);
+            pnlinfo.Controls.Add(label1);
+            pnlinfo.Controls.Add(txtcpf);
+            pnlinfo.Controls.Add(txtNome);
+            pnlinfo.Controls.Add(txtemail);
+            pnlinfo.Controls.Add(label2);
+            pnlinfo.Controls.Add(label4);
+            pnlinfo.Controls.Add(label3);
+            pnlinfo.Location = new Point(5, 65);
+            pnlinfo.Name = "pnlinfo";
+            pnlinfo.Size = new Size(728, 267);
+            pnlinfo.TabIndex = 13;
             // 
             // label12
             // 
@@ -114,7 +120,9 @@
             // 
             // txtcarteira
             // 
+            txtcarteira.DecimalPlaces = 2;
             txtcarteira.Location = new Point(303, 106);
+            txtcarteira.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             txtcarteira.Name = "txtcarteira";
             txtcarteira.Size = new Size(126, 23);
             txtcarteira.TabIndex = 27;
@@ -130,20 +138,20 @@
             label11.TabIndex = 26;
             label11.Text = "Carteira:";
             // 
-            // panel4
+            // pnlaccess
             // 
-            panel4.BackColor = SystemColors.ButtonHighlight;
-            panel4.Controls.Add(cbadm);
-            panel4.Controls.Add(label10);
-            panel4.Controls.Add(txtsenha);
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(txtconfirmarsenha);
-            panel4.Controls.Add(txtusuario);
-            panel4.Location = new Point(457, 6);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(266, 254);
-            panel4.TabIndex = 25;
+            pnlaccess.BackColor = SystemColors.ButtonHighlight;
+            pnlaccess.Controls.Add(cbadm);
+            pnlaccess.Controls.Add(label10);
+            pnlaccess.Controls.Add(txtsenha);
+            pnlaccess.Controls.Add(label9);
+            pnlaccess.Controls.Add(label8);
+            pnlaccess.Controls.Add(txtconfirmarsenha);
+            pnlaccess.Controls.Add(txtusuario);
+            pnlaccess.Location = new Point(457, 6);
+            pnlaccess.Name = "pnlaccess";
+            pnlaccess.Size = new Size(266, 254);
+            pnlaccess.TabIndex = 25;
             // 
             // cbadm
             // 
@@ -332,7 +340,6 @@
             label4.Size = new Size(71, 20);
             label4.TabIndex = 16;
             label4.Text = "Telefone:";
-            label4.Click += label4_Click;
             // 
             // label3
             // 
@@ -396,7 +403,7 @@
             btnok.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnok.ForeColor = SystemColors.ButtonFace;
             btnok.ImageAlign = ContentAlignment.MiddleLeft;
-            btnok.Location = new Point(433, 358);
+            btnok.Location = new Point(433, 373);
             btnok.Name = "btnok";
             btnok.Size = new Size(142, 37);
             btnok.TabIndex = 15;
@@ -413,7 +420,7 @@
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.ButtonFace;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(581, 358);
+            button1.Location = new Point(581, 373);
             button1.Name = "button1";
             button1.Size = new Size(142, 37);
             button1.TabIndex = 25;
@@ -429,12 +436,60 @@
             btndeletar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btndeletar.ForeColor = SystemColors.ButtonFace;
             btndeletar.ImageAlign = ContentAlignment.MiddleLeft;
-            btndeletar.Location = new Point(285, 358);
+            btndeletar.Location = new Point(285, 373);
             btndeletar.Name = "btndeletar";
             btndeletar.Size = new Size(142, 37);
             btndeletar.TabIndex = 26;
             btndeletar.Text = "Deletar";
             btndeletar.UseVisualStyleBackColor = false;
+            // 
+            // pnldepositar
+            // 
+            pnldepositar.BackColor = SystemColors.ButtonHighlight;
+            pnldepositar.Controls.Add(btndepositar);
+            pnldepositar.Controls.Add(label13);
+            pnldepositar.Controls.Add(nuddepositar);
+            pnldepositar.Location = new Point(5, 338);
+            pnldepositar.Name = "pnldepositar";
+            pnldepositar.Size = new Size(274, 77);
+            pnldepositar.TabIndex = 30;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label13.Location = new Point(7, 6);
+            label13.Name = "label13";
+            label13.Size = new Size(80, 20);
+            label13.TabIndex = 30;
+            label13.Text = "Depositar:";
+            // 
+            // nuddepositar
+            // 
+            nuddepositar.DecimalPlaces = 2;
+            nuddepositar.Location = new Point(97, 3);
+            nuddepositar.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            nuddepositar.Name = "nuddepositar";
+            nuddepositar.Size = new Size(160, 23);
+            nuddepositar.TabIndex = 30;
+            nuddepositar.ThousandsSeparator = true;
+            // 
+            // btndepositar
+            // 
+            btndepositar.BackColor = Color.GreenYellow;
+            btndepositar.Cursor = Cursors.Hand;
+            btndepositar.FlatAppearance.BorderSize = 0;
+            btndepositar.FlatStyle = FlatStyle.Flat;
+            btndepositar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndepositar.ForeColor = SystemColors.ButtonFace;
+            btndepositar.ImageAlign = ContentAlignment.MiddleLeft;
+            btndepositar.Location = new Point(100, 34);
+            btndepositar.Name = "btndepositar";
+            btndepositar.Size = new Size(142, 37);
+            btndepositar.TabIndex = 31;
+            btndepositar.Text = "Depositar";
+            btndepositar.UseVisualStyleBackColor = false;
+            btndepositar.Click += btndepositar_Click;
             // 
             // FormRegClient
             // 
@@ -442,30 +497,34 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(736, 416);
+            Controls.Add(pnldepositar);
             Controls.Add(btndeletar);
             Controls.Add(button1);
             Controls.Add(btnok);
-            Controls.Add(panel1);
+            Controls.Add(pnlinfo);
             Controls.Add(pnlsup);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormRegClient";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlinfo.ResumeLayout(false);
+            pnlinfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtcarteira).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            pnlaccess.ResumeLayout(false);
+            pnlaccess.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             pnlsup.ResumeLayout(false);
             pnlsup.PerformLayout();
+            pnldepositar.ResumeLayout(false);
+            pnldepositar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nuddepositar).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnlinfo;
         private Panel panel3;
         private RadioButton rboutro;
         private RadioButton rbfem;
@@ -484,7 +543,7 @@
         private Panel pnlsup;
         private Button btnFechar;
         private Label label7;
-        private Panel panel4;
+        private Panel pnlaccess;
         private TextBox txtconfirmarsenha;
         private TextBox txtusuario;
         private Label label10;
@@ -498,5 +557,9 @@
         private CheckBox cbadm;
         private Button button1;
         private Button btndeletar;
+        private Panel pnldepositar;
+        private Label label13;
+        private NumericUpDown nuddepositar;
+        private Button btndepositar;
     }
 }

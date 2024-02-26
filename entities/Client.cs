@@ -16,7 +16,7 @@ namespace Teste.entities
         public string Cpf { get; set; }
         public string Gender { get; set; }
         public string Phone { get; set; }
-
+        public int OrderID { get; set; }
         public int AccessId { get; set; }
         public float Wallet { get; set; }
 
