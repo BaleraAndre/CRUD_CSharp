@@ -1,0 +1,21 @@
+CREATE TABLE if not exists access (id SERIAL PRIMARY KEY , password VARCHAR(255), username VARCHAR(255), isAdmin BOOLEAN ,type_inv varchar(255));
+
+
+CREATE TABLE if not exists clients (id SERIAL PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), cpf VARCHAR(20), gender VARCHAR(10), phone VARCHAR(20), access_id INT, wallet FLOAT, investor_type INT);
+
+CREATE TABLE if not exists products (
+    Id SERIAL PRIMARY KEY,
+    Name VARCHAR(255),
+    Description TEXT,
+    InvType INTEGER,
+    Price DOUBLE PRECISION,
+    Quant INTEGER
+);
+
+
+
+
+
+
+
+
