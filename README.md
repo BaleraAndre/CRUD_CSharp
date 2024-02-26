@@ -5,7 +5,7 @@
 # :computer:
 
 
-Aplicação desktop para gerenciamento de clientes , produtos , compras/vendas.
+Aplicação desktop com dois niveis de acesso para gerenciamento de clientes , produtos , compras/vendas.
 
 ### 🖥️ Tecnologias e Ferramentas 
 <p align="left">
