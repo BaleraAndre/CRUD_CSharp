@@ -59,7 +59,7 @@ namespace Teste.DataAccessObject.Purchase
                     {
                         Id = Convert.ToInt32(reader["Id"]),
                         ClienteId = Convert.ToInt32(reader["ClienteId"]),
-                        Compra_aprovada = Convert.ToBoolean(reader["compra_aprovada"]) ,
+                        Compra_aprovada = Convert.ToBoolean(reader["compra_aprovada"]),
                         ItemDaCompras = new List<ItemDaCompra>()
                     };
 
@@ -99,6 +99,63 @@ namespace Teste.DataAccessObject.Purchase
             connection.Close();
 
             return compra;
+        }
+
+        public static async Task<List<Compra>> GetUnapprovedPurchasesAsync()
+        {
+            List<Compra> compras = new List<Compra>();
+
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string selectQuery = "SELECT * FROM Compra WHERE compra_aprovada = false";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
+            {
+                NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+
+                while (await reader.ReadAsync())
+                {
+                    Compra compra = new Compra
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        ClienteId = Convert.ToInt32(reader["ClienteId"]),
+                        Compra_aprovada = Convert.ToBoolean(reader["compra_aprovada"]),
+                        ItemDaCompras = new List<ItemDaCompra>()
+                    };
+
+                    string selectItemsQuery = "SELECT * FROM ItemDaCompra WHERE CompraId = @CompraId";
+
+                    using (NpgsqlCommand itemCommand = new NpgsqlCommand(selectItemsQuery, connection))
+                    {
+                        itemCommand.Parameters.AddWithValue("@CompraId", compra.Id);
+
+                        NpgsqlDataReader itemReader = await itemCommand.ExecuteReaderAsync();
+
+                        while (await itemReader.ReadAsync())
+                        {
+                            ItemDaCompra item = new ItemDaCompra
+                            {
+                                Id = Convert.ToInt32(itemReader["Id"]),
+                                CompraId = Convert.ToInt32(itemReader["CompraId"]),
+                                ProdutoId = Convert.ToInt32(itemReader["ProdutoId"]),
+                                Quantidade = Convert.ToInt32(itemReader["Quantidade"]),
+                                ValorPagoPorUnidade = Convert.ToDecimal(itemReader["ValorPagoPorUnidade"])
+                            };
+
+                            compra.ItemDaCompras.Add(item);
+                        }
+
+                        itemReader.Close();
+                    }
+
+                    compras.Add(compra);
+                }
+
+                reader.Close();
+            }
+
+            connection.Close();
+
+            return compras;
         }
     }
 }

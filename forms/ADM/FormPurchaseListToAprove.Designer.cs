@@ -39,6 +39,10 @@
             nudsaldodocliente = new NumericUpDown();
             label1 = new Label();
             txtnomedocliente = new TextBox();
+            id_compra = new DataGridViewTextBoxColumn();
+            id_client = new DataGridViewTextBoxColumn();
+            valor_compra = new DataGridViewTextBoxColumn();
+            prodnome = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvlistadecompra).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudsaldodocliente).BeginInit();
@@ -60,6 +64,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvlistadecompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvlistadecompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvlistadecompra.Columns.AddRange(new DataGridViewColumn[] { id_compra, id_client, valor_compra, prodnome });
             dgvlistadecompra.Location = new Point(5, 97);
             dgvlistadecompra.MultiSelect = false;
             dgvlistadecompra.Name = "dgvlistadecompra";
@@ -167,6 +172,38 @@
             txtnomedocliente.Size = new Size(180, 23);
             txtnomedocliente.TabIndex = 42;
             // 
+            // id_compra
+            // 
+            id_compra.FillWeight = 101.522842F;
+            id_compra.HeaderText = "id compra";
+            id_compra.Name = "id_compra";
+            id_compra.ReadOnly = true;
+            id_compra.Width = 110;
+            // 
+            // id_client
+            // 
+            id_client.FillWeight = 99.4923859F;
+            id_client.HeaderText = "id cliente";
+            id_client.Name = "id_client";
+            id_client.ReadOnly = true;
+            id_client.Width = 110;
+            // 
+            // valor_compra
+            // 
+            valor_compra.FillWeight = 99.4923859F;
+            valor_compra.HeaderText = "valor ";
+            valor_compra.Name = "valor_compra";
+            valor_compra.ReadOnly = true;
+            valor_compra.Width = 200;
+            // 
+            // prodnome
+            // 
+            prodnome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            prodnome.FillWeight = 99.4923859F;
+            prodnome.HeaderText = "nome produto";
+            prodnome.Name = "prodnome";
+            prodnome.ReadOnly = true;
+            // 
             // FormPurchaseListToAprove
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -201,5 +238,9 @@
         private NumericUpDown nudsaldodocliente;
         private Label label1;
         private TextBox txtnomedocliente;
+        private DataGridViewTextBoxColumn id_compra;
+        private DataGridViewTextBoxColumn id_client;
+        private DataGridViewTextBoxColumn valor_compra;
+        private DataGridViewTextBoxColumn prodnome;
     }
 }

@@ -17,6 +17,13 @@ namespace Teste.forms.ADM
             InitializeComponent();
         }
 
+        public static void GridLoad()
+        {
+            List<entities.Compra> compras = DataAccessObject.Purchase.purchaseDAO.GetUnapprovedPurchasesAsync().Result;
+
+
+        }
+
       
     }
 }
