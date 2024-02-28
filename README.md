@@ -12,7 +12,7 @@ Aplicação desktop com dois níveis de acesso para gerenciamento de clientes, p
 <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title = "POSTGRESQL"/>
 </p>
 
-##Script para a criação do banco e tabelas
+## Script para a criação do banco e tabelas
 Rode os comandos do arquivo abaixo em sua base de dados.
 [Link para o script SQL](./Script.sql.txt)
 
