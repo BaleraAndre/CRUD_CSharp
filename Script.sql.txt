@@ -15,13 +15,13 @@ CREATE TABLE if not exists products (
     Quant INTEGER
 );
 
-CREATE TABLE Compra (
+CREATE TABLE if not exist Compra (
     Id SERIAL PRIMARY KEY,
     ClienteId INT NOT NULL,
 compra_aprovada BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE ItemDaCompra (
+CREATE TABLE if not exist ItemDaCompra (
     Id SERIAL PRIMARY KEY,
     CompraId INT NOT NULL,
     ProdutoId INT NOT NULL,
