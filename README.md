@@ -22,4 +22,6 @@ Aplicação desktop com dois niveis de acesso para gerenciamento de clientes , p
 ![Cadastro de Usuário](./cadusuario.png)
 ![Lista de Produtos](./listaprod.png)
 ![Cadastro de Produtos](./cadprod.png)
+![Compra de Produtos](./comprar.png)
+
 
