@@ -1,3 +1,6 @@
+--após criar o banco teste_db
+--comandos para criação das tabelas 
+
 CREATE TABLE if not exists access (id SERIAL PRIMARY KEY , password VARCHAR(255), username VARCHAR(255), isAdmin BOOLEAN ,type_inv varchar(255));
 
 
@@ -27,7 +30,7 @@ CREATE TABLE ItemDaCompra (
     FOREIGN KEY (CompraId) REFERENCES Compra(Id)
 );
 
---senha 123
+--acesso primario senha 123 user adm 
 insert into access (password , username ,isadmin , type_inv) values ('202CB962AC59075B964B07152D234B70','adm',true,'Conservador');
 
 
