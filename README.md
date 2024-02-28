@@ -13,8 +13,7 @@ Aplicação desktop com dois níveis de acesso para gerenciamento de clientes, p
 </p>
 
 ##Script para a criação do banco e tabelas
-Rode os comandos do arquivo abaixo em sua base de dados 
-
+Rode os comandos do arquivo abaixo em sua base de dados.
 [Link para o script SQL](./Script.sql.txt)
 
 ## Tela Login 
