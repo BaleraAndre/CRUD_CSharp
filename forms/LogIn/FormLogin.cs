@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Teste.entities;
 using Teste.utils;
 
@@ -37,31 +38,36 @@ namespace Teste
         private async void btnentrar_Click(object sender, EventArgs e)
         {
 
-            Access access1 = new Access();
-            access1.Id = 1;
-            access1.User = "Andre marino";
-            access1.Password = "password";
-            access1.IsAdmin = false;
-
-            bool loggedIn = true;
-           /* string senha = Crip.EncryptAccessAsync(txtpass.Text);
-            string username = txtuser.Text;
-            List<Access> accessList = DataAccessObject.Access.AccessDAO.GetAllAsync().Result;
             
 
+            bool loggedIn = false;
+            string senha = Crip.EncryptAccessAsync(txtpass.Text);
+            string username = txtuser.Text;
+            List<Access> accessList;
+
+            Task<List<Access>> t = Task.Run(async () =>
+            {
+                return await DataAccessObject.Access.AccessDAO.GetAllAsync();
+            });
+
+            accessList = await t;
+
+
+            Access acs = null;
             foreach (Access access in accessList)
             {
                 if (access.User == username && access.Password == senha)
                 {
+                    acs = access;
                     loggedIn = true;
                     break;
                 }
-            }*/
+            }
 
             if (loggedIn)
             {
-               // Access access = await DataAccessObject.Access.AccessDAO.GetByUsernameAsync(username);
-                forms.Menu.FormMenu form = new forms.Menu.FormMenu(access1);
+                
+                forms.Menu.FormMenu form = new forms.Menu.FormMenu(acs);
                 form.ShowDialog();
             }
             else

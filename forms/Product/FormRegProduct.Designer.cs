@@ -44,7 +44,7 @@
             panel2 = new Panel();
             button3 = new Button();
             btnok = new Button();
-            button1 = new Button();
+            btndeletar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtquant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtvalor).BeginInit();
@@ -220,6 +220,7 @@
             button3.TabIndex = 31;
             button3.Text = "Voltar";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // btnok
             // 
@@ -236,22 +237,24 @@
             btnok.TabIndex = 29;
             btnok.Text = "Salvar";
             btnok.UseVisualStyleBackColor = false;
+            btnok.Click += btnok_Click_1;
             // 
-            // button1
+            // btndeletar
             // 
-            button1.BackColor = Color.Goldenrod;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(328, 349);
-            button1.Name = "button1";
-            button1.Size = new Size(142, 37);
-            button1.TabIndex = 32;
-            button1.Text = "Deletar";
-            button1.UseVisualStyleBackColor = false;
+            btndeletar.BackColor = Color.Goldenrod;
+            btndeletar.Cursor = Cursors.Hand;
+            btndeletar.FlatAppearance.BorderSize = 0;
+            btndeletar.FlatStyle = FlatStyle.Flat;
+            btndeletar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndeletar.ForeColor = SystemColors.ButtonFace;
+            btndeletar.ImageAlign = ContentAlignment.MiddleLeft;
+            btndeletar.Location = new Point(328, 349);
+            btndeletar.Name = "btndeletar";
+            btndeletar.Size = new Size(142, 37);
+            btndeletar.TabIndex = 32;
+            btndeletar.Text = "Deletar";
+            btndeletar.UseVisualStyleBackColor = false;
+            btndeletar.Click += btndeletar_Click;
             // 
             // FormRegProduct
             // 
@@ -259,7 +262,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(772, 396);
-            Controls.Add(button1);
+            Controls.Add(btndeletar);
             Controls.Add(button3);
             Controls.Add(btnok);
             Controls.Add(panel2);
@@ -294,6 +297,6 @@
         private Panel panel2;
         private Button button3;
         private Button btnok;
-        private Button button1;
+        private Button btndeletar;
     }
 }

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pnlateral = new Panel();
+            btnminhascompras = new Button();
+            btnmeuperfil = new Button();
             btncomprar = new Button();
             btnprod = new Button();
             btnusuario = new Button();
@@ -37,7 +39,6 @@
             label7 = new Label();
             panel1 = new Panel();
             lblmsg = new Label();
-            btnmeuperfil = new Button();
             pnlateral.SuspendLayout();
             pnlsup.SuspendLayout();
             panel1.SuspendLayout();
@@ -46,6 +47,7 @@
             // pnlateral
             // 
             pnlateral.BackColor = Color.FromArgb(224, 224, 224);
+            pnlateral.Controls.Add(btnminhascompras);
             pnlateral.Controls.Add(btnmeuperfil);
             pnlateral.Controls.Add(btncomprar);
             pnlateral.Controls.Add(btnprod);
@@ -56,6 +58,42 @@
             pnlateral.Padding = new Padding(2);
             pnlateral.Size = new Size(206, 370);
             pnlateral.TabIndex = 0;
+            // 
+            // btnminhascompras
+            // 
+            btnminhascompras.BackColor = Color.Goldenrod;
+            btnminhascompras.Cursor = Cursors.Hand;
+            btnminhascompras.FlatAppearance.BorderSize = 0;
+            btnminhascompras.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btnminhascompras.FlatStyle = FlatStyle.Flat;
+            btnminhascompras.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btnminhascompras.ForeColor = SystemColors.ButtonFace;
+            btnminhascompras.Location = new Point(6, 176);
+            btnminhascompras.Margin = new Padding(5);
+            btnminhascompras.Name = "btnminhascompras";
+            btnminhascompras.Size = new Size(193, 37);
+            btnminhascompras.TabIndex = 5;
+            btnminhascompras.Text = "Minhas compras";
+            btnminhascompras.UseVisualStyleBackColor = false;
+            btnminhascompras.Click += button1_Click_1;
+            // 
+            // btnmeuperfil
+            // 
+            btnmeuperfil.BackColor = Color.Goldenrod;
+            btnmeuperfil.Cursor = Cursors.Hand;
+            btnmeuperfil.FlatAppearance.BorderSize = 0;
+            btnmeuperfil.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
+            btnmeuperfil.FlatStyle = FlatStyle.Flat;
+            btnmeuperfil.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            btnmeuperfil.ForeColor = SystemColors.ButtonFace;
+            btnmeuperfil.Location = new Point(6, 133);
+            btnmeuperfil.Margin = new Padding(5);
+            btnmeuperfil.Name = "btnmeuperfil";
+            btnmeuperfil.Size = new Size(193, 37);
+            btnmeuperfil.TabIndex = 4;
+            btnmeuperfil.Text = "Minha carteira";
+            btnmeuperfil.UseVisualStyleBackColor = false;
+            btnmeuperfil.Click += btnmeuperfil_Click;
             // 
             // btncomprar
             // 
@@ -177,24 +215,6 @@
             lblmsg.TabIndex = 26;
             lblmsg.Text = "Usuario: Andre Marino Balera (Dev)";
             // 
-            // btnmeuperfil
-            // 
-            btnmeuperfil.BackColor = Color.Goldenrod;
-            btnmeuperfil.Cursor = Cursors.Hand;
-            btnmeuperfil.FlatAppearance.BorderSize = 0;
-            btnmeuperfil.FlatAppearance.MouseOverBackColor = Color.DarkGoldenrod;
-            btnmeuperfil.FlatStyle = FlatStyle.Flat;
-            btnmeuperfil.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            btnmeuperfil.ForeColor = SystemColors.ButtonFace;
-            btnmeuperfil.Location = new Point(6, 133);
-            btnmeuperfil.Margin = new Padding(5);
-            btnmeuperfil.Name = "btnmeuperfil";
-            btnmeuperfil.Size = new Size(193, 37);
-            btnmeuperfil.TabIndex = 4;
-            btnmeuperfil.Text = "Minha carteira";
-            btnmeuperfil.UseVisualStyleBackColor = false;
-            btnmeuperfil.Click += btnmeuperfil_Click;
-            // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -207,6 +227,8 @@
             Name = "FormMenu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            Load += FormMenu_Load;
+         
             pnlateral.ResumeLayout(false);
             pnlsup.ResumeLayout(false);
             pnlsup.PerformLayout();
@@ -227,5 +249,6 @@
         private Label lblmsg;
         private Button btncomprar;
         private Button btnmeuperfil;
+        private Button btnminhascompras;
     }
 }

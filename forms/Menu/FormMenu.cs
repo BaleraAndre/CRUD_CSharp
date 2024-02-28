@@ -14,27 +14,20 @@ namespace Teste.forms.Menu
 {
     public partial class FormMenu : Form
     {
-        private entities.Client cli;
+        private entities.Client _cli;
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
+        private readonly Access _access;
+
         public FormMenu(Access access)
         {
             InitializeComponent();
-            if (!access.IsAdmin)
+            this._access = access;
+            Task.Run(async () =>
             {
-                btnusuario.Visible = false;
-                btnprod.Visible = false;
-                lblmsg.Text = $"Bem vindo, ${access.User} ! (Usuario)";
-            }
-            else
-            {
-                lblmsg.Text = $"Bem vindo, ${access.User} ! (ADM)";
-                btncomprar.Visible = false;
-            };
-
-            cli = DataAccessObject.Client.ClientDAO.GetByAccessIdAsync(access.Id).Result;
-
+                _cli = await DataAccessObject.Client.ClientDAO.GetByAccessIdAsync(_access.Id);
+            });
         }
 
         private void btnusuario_Click(object sender, EventArgs e)
@@ -77,14 +70,48 @@ namespace Teste.forms.Menu
 
         private void btncomprar_Click_1(object sender, EventArgs e)
         {
-            forms.Product.FormBUY form = new Product.FormBUY(cli);
+            forms.Product.FormBUY form = new Product.FormBUY(_cli);
             form.ShowDialog();
         }
 
         private void btnmeuperfil_Click(object sender, EventArgs e)
         {
-            forms.Client.FormRegClient form = new Client.FormRegClient(cli);
+            forms.Client.FormRegClient form = new Client.FormRegClient(_cli);
             form.ShowDialog();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            forms.ADM.FormPurchaseListToAprove form = new forms.ADM.FormPurchaseListToAprove(_cli);
+            form.ShowDialog();
+        }
+
+        private void FormMenu_Load(object sender, EventArgs e)
+        {
+            if (!_access.IsAdmin)
+            {
+                btnusuario.Visible = false;
+                btnprod.Visible = false;
+                btnmeuperfil.Location = btnusuario.Location;
+                btncomprar.Location = btnprod.Location;              
+                lblmsg.Text = $"Bem vindo, {_access.User} ! (Usuario)";
+                
+            }
+            else
+            {
+                lblmsg.Text = $"Bem vindo, {_access.User} ! (ADM)";
+                btncomprar.Visible = false;
+                btnmeuperfil .Visible = false;
+                btnminhascompras.Visible = false;
+
+            };
+
+            Task.Run(async () =>
+            {
+                _cli = await  DataAccessObject.Client.ClientDAO.GetByAccessIdAsync(_access.Id);
+            });
+
+            
         }
     }
 }

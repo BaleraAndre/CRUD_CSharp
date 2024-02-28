@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvUser = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
@@ -43,8 +43,8 @@
             btnfechar = new Button();
             label7 = new Label();
             label2 = new Label();
-            textBox2 = new TextBox();
-            button1 = new Button();
+            txtnome = new TextBox();
+            btnpesquisar = new Button();
             btnok = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUser).BeginInit();
             pnlsup.SuspendLayout();
@@ -56,36 +56,36 @@
             dgvUser.AllowUserToDeleteRows = false;
             dgvUser.AllowUserToResizeColumns = false;
             dgvUser.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvUser.Columns.AddRange(new DataGridViewColumn[] { ID, Nome, Telefone, Email, Sexo, wallet, TipInv });
             dgvUser.EnableHeadersVisualStyles = false;
             dgvUser.Location = new Point(12, 96);
             dgvUser.MultiSelect = false;
             dgvUser.Name = "dgvUser";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.AppWorkspace;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvUser.RowHeadersVisible = false;
             dgvUser.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = Color.PapayaWhip;
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
-            dgvUser.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.PapayaWhip;
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = Color.WhiteSmoke;
+            dgvUser.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvUser.Size = new Size(776, 342);
             dgvUser.TabIndex = 0;
@@ -190,29 +190,30 @@
             label2.TabIndex = 28;
             label2.Text = "Nome:";
             // 
-            // textBox2
+            // txtnome
             // 
-            textBox2.Location = new Point(73, 61);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(223, 23);
-            textBox2.TabIndex = 27;
+            txtnome.Location = new Point(73, 61);
+            txtnome.Name = "txtnome";
+            txtnome.Size = new Size(223, 23);
+            txtnome.TabIndex = 27;
             // 
-            // button1
+            // btnpesquisar
             // 
-            button1.BackColor = Color.DodgerBlue;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(307, 59);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 27);
-            button1.TabIndex = 39;
-            button1.Text = "Pesquisar";
-            button1.TextAlign = ContentAlignment.TopCenter;
-            button1.UseVisualStyleBackColor = false;
+            btnpesquisar.BackColor = Color.DodgerBlue;
+            btnpesquisar.Cursor = Cursors.Hand;
+            btnpesquisar.FlatAppearance.BorderSize = 0;
+            btnpesquisar.FlatStyle = FlatStyle.Flat;
+            btnpesquisar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnpesquisar.ForeColor = SystemColors.ButtonFace;
+            btnpesquisar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnpesquisar.Location = new Point(307, 59);
+            btnpesquisar.Name = "btnpesquisar";
+            btnpesquisar.Size = new Size(116, 27);
+            btnpesquisar.TabIndex = 39;
+            btnpesquisar.Text = "Pesquisar";
+            btnpesquisar.TextAlign = ContentAlignment.TopCenter;
+            btnpesquisar.UseVisualStyleBackColor = false;
+            btnpesquisar.Click += btnpesquisar_Click;
             // 
             // btnok
             // 
@@ -236,11 +237,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnpesquisar);
             Controls.Add(btnok);
             Controls.Add(pnlsup);
             Controls.Add(label2);
-            Controls.Add(textBox2);
+            Controls.Add(txtnome);
             Controls.Add(dgvUser);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormUser";
@@ -267,8 +268,8 @@
         private Button btnfechar;
         private Label label7;
         private Label label2;
-        private TextBox textBox2;
-        private Button button1;
+        private TextBox txtnome;
+        private Button btnpesquisar;
         private Button btnok;
     }
 }

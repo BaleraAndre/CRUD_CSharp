@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teste.entities;
 
 namespace Teste.forms.User
 {
@@ -107,6 +108,26 @@ namespace Teste.forms.User
             form.ShowDialog();
             dgvUser.Rows.Clear();
             Gridload();
+        }
+
+        private void btnpesquisar_Click(object sender, EventArgs e)
+        {
+            entities.Client client = new entities.Client();
+            Task t = Task.Run(async () =>
+            {
+                client = await DataAccessObject.Client.ClientDAO.GetByNameAsync(client.Name);
+            });
+
+            t.Wait();
+            if(client != null)
+            {
+                forms.Client.FormRegClient form = new Client.FormRegClient(client);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Não encontrado");
+            }
         }
     }
 }

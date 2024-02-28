@@ -31,18 +31,18 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgvlistadecompra = new DataGridView();
+            id_compra = new DataGridViewTextBoxColumn();
+            quant = new DataGridViewTextBoxColumn();
+            valor_compra = new DataGridViewTextBoxColumn();
+            prodnome = new DataGridViewTextBoxColumn();
             btnFechar = new Button();
             panel2 = new Panel();
             label7 = new Label();
-            btnok = new Button();
+            btncancelar = new Button();
             label2 = new Label();
             nudsaldodocliente = new NumericUpDown();
             label1 = new Label();
             txtnomedocliente = new TextBox();
-            id_compra = new DataGridViewTextBoxColumn();
-            id_client = new DataGridViewTextBoxColumn();
-            valor_compra = new DataGridViewTextBoxColumn();
-            prodnome = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvlistadecompra).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudsaldodocliente).BeginInit();
@@ -64,7 +64,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvlistadecompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvlistadecompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvlistadecompra.Columns.AddRange(new DataGridViewColumn[] { id_compra, id_client, valor_compra, prodnome });
+            dgvlistadecompra.Columns.AddRange(new DataGridViewColumn[] { id_compra, quant, valor_compra, prodnome });
             dgvlistadecompra.Location = new Point(5, 97);
             dgvlistadecompra.MultiSelect = false;
             dgvlistadecompra.Name = "dgvlistadecompra";
@@ -77,6 +77,38 @@
             dgvlistadecompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvlistadecompra.Size = new Size(783, 341);
             dgvlistadecompra.TabIndex = 36;
+            // 
+            // id_compra
+            // 
+            id_compra.FillWeight = 101.522842F;
+            id_compra.HeaderText = "id compra";
+            id_compra.Name = "id_compra";
+            id_compra.ReadOnly = true;
+            id_compra.Width = 110;
+            // 
+            // quant
+            // 
+            quant.FillWeight = 99.4923859F;
+            quant.HeaderText = "quantidade";
+            quant.Name = "quant";
+            quant.ReadOnly = true;
+            quant.Width = 110;
+            // 
+            // valor_compra
+            // 
+            valor_compra.FillWeight = 99.4923859F;
+            valor_compra.HeaderText = "valor ";
+            valor_compra.Name = "valor_compra";
+            valor_compra.ReadOnly = true;
+            valor_compra.Width = 200;
+            // 
+            // prodnome
+            // 
+            prodnome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            prodnome.FillWeight = 99.4923859F;
+            prodnome.HeaderText = "nome produto";
+            prodnome.Name = "prodnome";
+            prodnome.ReadOnly = true;
             // 
             // btnFechar
             // 
@@ -118,21 +150,22 @@
             label7.TabIndex = 25;
             label7.Text = "Lista de compras em espera";
             // 
-            // btnok
+            // btncancelar
             // 
-            btnok.BackColor = Color.DarkOrange;
-            btnok.Cursor = Cursors.Hand;
-            btnok.FlatAppearance.BorderSize = 0;
-            btnok.FlatStyle = FlatStyle.Flat;
-            btnok.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnok.ForeColor = SystemColors.ButtonFace;
-            btnok.ImageAlign = ContentAlignment.MiddleLeft;
-            btnok.Location = new Point(646, 51);
-            btnok.Name = "btnok";
-            btnok.Size = new Size(142, 37);
-            btnok.TabIndex = 40;
-            btnok.Text = "Aprovar";
-            btnok.UseVisualStyleBackColor = false;
+            btncancelar.BackColor = Color.DarkOrange;
+            btncancelar.Cursor = Cursors.Hand;
+            btncancelar.FlatAppearance.BorderSize = 0;
+            btncancelar.FlatStyle = FlatStyle.Flat;
+            btncancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btncancelar.ForeColor = SystemColors.ButtonFace;
+            btncancelar.ImageAlign = ContentAlignment.MiddleLeft;
+            btncancelar.Location = new Point(646, 51);
+            btncancelar.Name = "btncancelar";
+            btncancelar.Size = new Size(142, 37);
+            btncancelar.TabIndex = 40;
+            btncancelar.Text = "Cancelar";
+            btncancelar.UseVisualStyleBackColor = false;
+            btncancelar.Click += btncancelar_Click;
             // 
             // label2
             // 
@@ -172,38 +205,6 @@
             txtnomedocliente.Size = new Size(180, 23);
             txtnomedocliente.TabIndex = 42;
             // 
-            // id_compra
-            // 
-            id_compra.FillWeight = 101.522842F;
-            id_compra.HeaderText = "id compra";
-            id_compra.Name = "id_compra";
-            id_compra.ReadOnly = true;
-            id_compra.Width = 110;
-            // 
-            // id_client
-            // 
-            id_client.FillWeight = 99.4923859F;
-            id_client.HeaderText = "id cliente";
-            id_client.Name = "id_client";
-            id_client.ReadOnly = true;
-            id_client.Width = 110;
-            // 
-            // valor_compra
-            // 
-            valor_compra.FillWeight = 99.4923859F;
-            valor_compra.HeaderText = "valor ";
-            valor_compra.Name = "valor_compra";
-            valor_compra.ReadOnly = true;
-            valor_compra.Width = 200;
-            // 
-            // prodnome
-            // 
-            prodnome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            prodnome.FillWeight = 99.4923859F;
-            prodnome.HeaderText = "nome produto";
-            prodnome.Name = "prodnome";
-            prodnome.ReadOnly = true;
-            // 
             // FormPurchaseListToAprove
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -213,11 +214,12 @@
             Controls.Add(label1);
             Controls.Add(dgvlistadecompra);
             Controls.Add(panel2);
-            Controls.Add(btnok);
+            Controls.Add(btncancelar);
             Controls.Add(label2);
             Controls.Add(nudsaldodocliente);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPurchaseListToAprove";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormPurchaseListToAprove";
             ((System.ComponentModel.ISupportInitialize)dgvlistadecompra).EndInit();
             panel2.ResumeLayout(false);
@@ -233,13 +235,13 @@
         private Button btnFechar;
         private Panel panel2;
         private Label label7;
-        private Button btnok;
+        private Button btncancelar;
         private Label label2;
         private NumericUpDown nudsaldodocliente;
         private Label label1;
         private TextBox txtnomedocliente;
         private DataGridViewTextBoxColumn id_compra;
-        private DataGridViewTextBoxColumn id_client;
+        private DataGridViewTextBoxColumn quant;
         private DataGridViewTextBoxColumn valor_compra;
         private DataGridViewTextBoxColumn prodnome;
     }

@@ -18,7 +18,7 @@ namespace Teste.DataAccessObject.Product
         public static async Task InsertProductAsync(entities.Product product)
         {
             IsValid(product);
-            int type = int.Parse(product.Invtype.ToString());
+            int type = (int)product.Invtype;
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
             string insertQuery = "INSERT INTO products (name, description, invtype, price, quant) VALUES (@Name, @Description, @Invtype, @Price ,@Quant)";
 
@@ -33,11 +33,30 @@ namespace Teste.DataAccessObject.Product
                 await command.ExecuteNonQueryAsync();
             }
         }
-        public async Task DeleteProductAsync(int productId)
+        public static async Task UpdateAsync(entities.Product product)
+        {
+            IsValid(product);
+
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string updateQuery = "UPDATE products SET name = @Name, description = @Description, invtype = @Invtype, price = @Price, quant = @Quant WHERE id = @Id";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Id", product.Id);
+                command.Parameters.AddWithValue("@Name", product.Name);
+                command.Parameters.AddWithValue("@Description", product.Description);
+                command.Parameters.AddWithValue("@Invtype", (int)product.Invtype);
+                command.Parameters.AddWithValue("@Price", product.Price);
+                command.Parameters.AddWithValue("@Quant", product.Quant);
+
+                await command.ExecuteNonQueryAsync();
+            }
+        }
+        public static async Task DeleteProductAsync(int productId)
         {
 
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
-            string deleteQuery = "DELETE FROM produtos WHERE id = @ProductId";
+            string deleteQuery = "DELETE FROM products WHERE id = @ProductId";
 
             using (NpgsqlCommand command = new NpgsqlCommand(deleteQuery, connection))
             {
@@ -47,26 +66,36 @@ namespace Teste.DataAccessObject.Product
             }
         }
 
-        public async Task UpdateProductAsync(entities.Product product)
+        public static async Task<entities.Product> GetByIdAsync(int productId)
         {
-            IsValid(product);
+            entities.Product product = null;
+
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
-            string updateQuery = "UPDATE produtos SET name = @Name, description = @Description, category_id = @CategoryId, price = @Price WHERE id = @ProductId";
+            string selectQuery = "SELECT id, name, description, invtype, price, quant FROM products WHERE id = @ProductId";
 
-            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
             {
-                command.Parameters.AddWithValue("@Name", product.Name);
-                command.Parameters.AddWithValue("@Description", product.Description);
-                //  command.Parameters.AddWithValue("@CategoryId", product.CategoryId);
-                command.Parameters.AddWithValue("@Price", product.Price);
-                command.Parameters.AddWithValue("@ProductId", product.Id);
+                command.Parameters.AddWithValue("@ProductId", productId);
 
-                await command.ExecuteNonQueryAsync();
+                using (NpgsqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        product = new entities.Product
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Name = reader["name"].ToString(),
+                            Description = reader["description"].ToString(),
+                            Price = double.Parse(reader["Price"].ToString()),
+                            Quant = int.Parse(reader["quant"].ToString()),
+                            Invtype = (enu.InvType.investorType)reader["InvType"]
+                        };
+                    }
+                }
             }
 
-
+            return product;
         }
-
         public static async Task<List<entities.Product>> GetAllAsync()
         {
             List<entities.Product> productList = new List<entities.Product>();
@@ -98,27 +127,30 @@ namespace Teste.DataAccessObject.Product
             return productList;
         }
 
-        public async Task<entities.Product> GetProductByNameAsync(string productName)
+        public static async Task<entities.Product> GetByNameAsync(string name)
         {
             entities.Product product = null;
+
             NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
-            string selectQuery = "SELECT id, name, description, category_id, price FROM produtos WHERE name ILIKE @ProductName LIMIT 1";
+            string selectQuery = "SELECT id, name, description, invtype, price, quant FROM products WHERE name = @Name";
 
             using (NpgsqlCommand command = new NpgsqlCommand(selectQuery, connection))
             {
-                command.Parameters.AddWithValue("@ProductName", "%" + productName + "%");
+                command.Parameters.AddWithValue("@Name", name);
 
                 using (NpgsqlDataReader reader = await command.ExecuteReaderAsync())
                 {
                     if (await reader.ReadAsync())
                     {
-                      /*  product = new entities.Product(
-                            reader.GetInt32(0),
-                            reader.GetString(1),
-                            reader.GetString(2),
-                            reader.GetInt32(3),
-                            reader.GetDouble(4),
-                            reader.GetInt32(5));*/
+                        product = new entities.Product
+                        {
+                            Id = Convert.ToInt32(reader["id"]),
+                            Name = reader["name"].ToString(),
+                            Description = reader["description"].ToString(),
+                            Price = double.Parse(reader["Price"].ToString()),
+                            Quant = int.Parse(reader["quant"].ToString()),
+                            Invtype = (enu.InvType.investorType)reader["InvType"]
+                        };
                     }
                 }
             }

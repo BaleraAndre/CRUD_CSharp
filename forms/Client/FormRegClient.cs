@@ -16,12 +16,13 @@ namespace Teste.forms.Client
     {
 
         private int idcli;
+        private entities.Client _client;
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
         public FormRegClient(entities.Client client)
         {
-            
+            _client = client;
             InitializeComponent();
             if (client != null)
             {
@@ -69,30 +70,66 @@ namespace Teste.forms.Client
                 return;
             }
 
-
             int accessid = 0;
 
-            accessid = DataAccessObject.Access.AccessDAO.InsertAccessAsync(access).Result;
+            Task t = Task.Run(async () =>
+            {
+                accessid = await DataAccessObject.Access.AccessDAO.InsertAccessAsync(access);
+            });
+
+            t.Wait();
 
             if (accessid == 0)
             {
                 return;
             }
 
-
             entities.Client client = new entities.Client();
-            client.Name = txtNome.Text;
-            client.Wallet = (float)txtcarteira.Value;
-            client.Email = txtemail.Text;
-            client.Cpf = txtcpf.Text;
-            client.AccessId = accessid;
-            if (rbmasc.Checked) { client.Gender = "Male"; }
-            else if (rbfem.Checked) { client.Gender = "Female"; }
-            else { client.Gender = "Other"; }
+            if (_client == null)
+            {
+                client.Name = txtNome.Text;
+                client.Wallet = (float)txtcarteira.Value;
+                client.Email = txtemail.Text;
+                client.Cpf = txtcpf.Text;
+                client.AccessId = accessid;
+                client.Phone = txttelefone.Text;
+                client.Type = (enu.InvType.investorType)cbType.SelectedItem;
+                if (rbmasc.Checked) { client.Gender = "Male"; }
+                else if (rbfem.Checked) { client.Gender = "Female"; }
+                else { client.Gender = "Other"; }
 
 
-            var result = DataAccessObject.Client.ClientDAO.InsertClientAsync(client);
-            this.Close();
+                Task t2 = Task.Run(async () =>
+                {
+                    await DataAccessObject.Client.ClientDAO.InsertClientAsync(client);
+                });
+
+                t2.Wait();
+
+                this.Close();
+            }
+            else
+            {
+                client.Name = txtNome.Text;
+                client.Wallet = (float)txtcarteira.Value;
+                client.Email = txtemail.Text;
+                client.Cpf = txtcpf.Text;
+                client.AccessId = accessid;
+                client.Phone = txttelefone.Text;
+                if (rbmasc.Checked) { client.Gender = "Male"; }
+                else if (rbfem.Checked) { client.Gender = "Female"; }
+                else { client.Gender = "Other"; }
+
+                Task t2 = Task.Run(async () =>
+                {
+                    await DataAccessObject.Client.ClientDAO.UpdateClientAsync(client);
+                });
+
+                t2.Wait();
+
+                this.Close();
+
+            }
         }
 
         private void btnFechar_Click_1(object sender, EventArgs e)
@@ -123,11 +160,30 @@ namespace Teste.forms.Client
 
         private void btndepositar_Click(object sender, EventArgs e)
         {
-            
+
             float value = (float)nuddepositar.Value;
-            DataAccessObject.Client.ClientDAO.AddToWalletAsync(idcli, value);
+
+            Task t = Task.Run(async () =>
+            {
+                await DataAccessObject.Client.ClientDAO.AddToWalletAsync(idcli, value);
+            });
+
+            t.Wait();
+
             MessageBox.Show("Depósito realizado com sucesso", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
+
+        private void btndeletar_Click(object sender, EventArgs e)
+        {
+            Task t = Task.Run(async () =>
+            {
+                await DataAccessObject.Client.ClientDAO.DeleteClientAsync(idcli);
+            });
+
+            t.Wait();
+
+            this.Close();
         }
     }
 }

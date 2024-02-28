@@ -27,6 +27,8 @@ CREATE TABLE ItemDaCompra (
     FOREIGN KEY (CompraId) REFERENCES Compra(Id)
 );
 
+--senha 123
+insert into access (password , username ,isadmin , type_inv) values ('202CB962AC59075B964B07152D234B70','adm',true,'Conservador');
 
 
 

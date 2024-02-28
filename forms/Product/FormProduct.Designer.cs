@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             dgvprod = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Nome = new DataGridViewTextBoxColumn();
@@ -40,12 +40,12 @@
             quant = new DataGridViewTextBoxColumn();
             Perfil = new DataGridViewTextBoxColumn();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtnome = new TextBox();
             btnFechar = new Button();
             pnlsup = new Panel();
             label7 = new Label();
             btnok = new Button();
-            button1 = new Button();
+            btnpesquisar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvprod).BeginInit();
             pnlsup.SuspendLayout();
             SuspendLayout();
@@ -56,43 +56,43 @@
             dgvprod.AllowUserToDeleteRows = false;
             dgvprod.AllowUserToResizeColumns = false;
             dgvprod.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.PapayaWhip;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dgvprod.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvprod.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = Color.PapayaWhip;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dgvprod.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.Padding = new Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvprod.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvprod.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvprod.Columns.AddRange(new DataGridViewColumn[] { Id, Nome, Descricao, Valor, quant, Perfil });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvprod.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvprod.DefaultCellStyle = dataGridViewCellStyle7;
             dgvprod.Location = new Point(12, 93);
             dgvprod.MultiSelect = false;
             dgvprod.Name = "dgvprod";
             dgvprod.ReadOnly = true;
             dgvprod.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvprod.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvprod.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dgvprod.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvprod.Size = new Size(776, 345);
             dgvprod.TabIndex = 0;
@@ -148,12 +148,12 @@
             label1.TabIndex = 19;
             label1.Text = "Nome:";
             // 
-            // textBox1
+            // txtnome
             // 
-            textBox1.Location = new Point(74, 59);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(223, 23);
-            textBox1.TabIndex = 18;
+            txtnome.Location = new Point(74, 59);
+            txtnome.Name = "txtnome";
+            txtnome.Size = new Size(223, 23);
+            txtnome.TabIndex = 18;
             // 
             // btnFechar
             // 
@@ -214,35 +214,36 @@
             btnok.TabIndex = 36;
             btnok.Text = "Novo";
             btnok.UseVisualStyleBackColor = false;
-            btnok.Click += btnok_Click;
+            btnok.Click += btnNovo_Click;
             // 
-            // button1
+            // btnpesquisar
             // 
-            button1.BackColor = Color.DodgerBlue;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(303, 57);
-            button1.Name = "button1";
-            button1.Size = new Size(116, 27);
-            button1.TabIndex = 37;
-            button1.Text = "Pesquisar";
-            button1.TextAlign = ContentAlignment.TopCenter;
-            button1.UseVisualStyleBackColor = false;
+            btnpesquisar.BackColor = Color.DodgerBlue;
+            btnpesquisar.Cursor = Cursors.Hand;
+            btnpesquisar.FlatAppearance.BorderSize = 0;
+            btnpesquisar.FlatStyle = FlatStyle.Flat;
+            btnpesquisar.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnpesquisar.ForeColor = SystemColors.ButtonFace;
+            btnpesquisar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnpesquisar.Location = new Point(303, 57);
+            btnpesquisar.Name = "btnpesquisar";
+            btnpesquisar.Size = new Size(116, 27);
+            btnpesquisar.TabIndex = 37;
+            btnpesquisar.Text = "Pesquisar";
+            btnpesquisar.TextAlign = ContentAlignment.TopCenter;
+            btnpesquisar.UseVisualStyleBackColor = false;
+            btnpesquisar.Click += btnpesquisar_Click;
             // 
             // FormProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnpesquisar);
             Controls.Add(btnok);
             Controls.Add(pnlsup);
             Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(txtnome);
             Controls.Add(dgvprod);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormProduct";
@@ -259,12 +260,12 @@
 
         private DataGridView dgvprod;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtnome;
         private Button btnFechar;
         private Panel pnlsup;
         private Label label7;
         private Button btnok;
-        private Button button1;
+        private Button btnpesquisar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Nome;
         private DataGridViewTextBoxColumn Descricao;

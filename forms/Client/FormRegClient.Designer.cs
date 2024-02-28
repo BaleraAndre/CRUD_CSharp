@@ -62,9 +62,9 @@
             button1 = new Button();
             btndeletar = new Button();
             pnldepositar = new Panel();
+            btndepositar = new Button();
             label13 = new Label();
             nuddepositar = new NumericUpDown();
-            btndepositar = new Button();
             pnlinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtcarteira).BeginInit();
             pnlaccess.SuspendLayout();
@@ -442,6 +442,7 @@
             btndeletar.TabIndex = 26;
             btndeletar.Text = "Deletar";
             btndeletar.UseVisualStyleBackColor = false;
+            btndeletar.Click += btndeletar_Click;
             // 
             // pnldepositar
             // 
@@ -453,6 +454,23 @@
             pnldepositar.Name = "pnldepositar";
             pnldepositar.Size = new Size(274, 77);
             pnldepositar.TabIndex = 30;
+            // 
+            // btndepositar
+            // 
+            btndepositar.BackColor = Color.GreenYellow;
+            btndepositar.Cursor = Cursors.Hand;
+            btndepositar.FlatAppearance.BorderSize = 0;
+            btndepositar.FlatStyle = FlatStyle.Flat;
+            btndepositar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btndepositar.ForeColor = SystemColors.ButtonFace;
+            btndepositar.ImageAlign = ContentAlignment.MiddleLeft;
+            btndepositar.Location = new Point(100, 34);
+            btndepositar.Name = "btndepositar";
+            btndepositar.Size = new Size(142, 37);
+            btndepositar.TabIndex = 31;
+            btndepositar.Text = "Depositar";
+            btndepositar.UseVisualStyleBackColor = false;
+            btndepositar.Click += btndepositar_Click;
             // 
             // label13
             // 
@@ -473,23 +491,6 @@
             nuddepositar.Size = new Size(160, 23);
             nuddepositar.TabIndex = 30;
             nuddepositar.ThousandsSeparator = true;
-            // 
-            // btndepositar
-            // 
-            btndepositar.BackColor = Color.GreenYellow;
-            btndepositar.Cursor = Cursors.Hand;
-            btndepositar.FlatAppearance.BorderSize = 0;
-            btndepositar.FlatStyle = FlatStyle.Flat;
-            btndepositar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btndepositar.ForeColor = SystemColors.ButtonFace;
-            btndepositar.ImageAlign = ContentAlignment.MiddleLeft;
-            btndepositar.Location = new Point(100, 34);
-            btndepositar.Name = "btndepositar";
-            btndepositar.Size = new Size(142, 37);
-            btndepositar.TabIndex = 31;
-            btndepositar.Text = "Depositar";
-            btndepositar.UseVisualStyleBackColor = false;
-            btndepositar.Click += btndepositar_Click;
             // 
             // FormRegClient
             // 

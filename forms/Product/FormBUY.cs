@@ -72,6 +72,7 @@ namespace Teste.forms.Product
             await DataAccessObject.Purchase.purchaseDAO.InserirCompraAsync(compra);
             MessageBox.Show("O pedido foi concluído. Aguarde a aprovação.", "Pedido Concluído", MessageBoxButtons.OK);
             await DataAccessObject.Product.ProductDAO.UpdateProductQuantityAsync(product.Id,itemDaCompra.Quantidade);
+            await DataAccessObject.Client.ClientDAO.SubtractFromWalletAsync(_cliid,(float)(product.Price * product.Quant));
 
 
 

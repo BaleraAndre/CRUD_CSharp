@@ -38,6 +38,31 @@ namespace Teste.DataAccessObject.Client
                 connection.Close();
             }
         }
+       
+        public static async Task UpdateClientAsync(entities.Client client)
+        {
+            await IsValidAsync(client);
+
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+            string updateQuery = "UPDATE clients SET name = @Name, email = @Email, cpf = @Cpf, gender = @Gender, phone = @Phone, access_id = @AccessId, wallet = @Wallet, investor_type = @InvestorType WHERE id = @Id";
+
+            using (NpgsqlCommand command = new NpgsqlCommand(updateQuery, connection))
+            {
+                command.Parameters.AddWithValue("@Id", client.Id);
+                command.Parameters.AddWithValue("@Name", client.Name);
+                command.Parameters.AddWithValue("@Email", client.Email);
+                command.Parameters.AddWithValue("@Cpf", client.Cpf);
+                command.Parameters.AddWithValue("@Gender", client.Gender);
+                command.Parameters.AddWithValue("@Phone", client.Phone);
+                command.Parameters.AddWithValue("@AccessId", client.AccessId);
+                command.Parameters.AddWithValue("@Wallet", client.Wallet);
+                command.Parameters.AddWithValue("@InvestorType", (int)client.Type);
+
+                await command.ExecuteNonQueryAsync();
+
+                connection.Close();
+            }
+        }
 
         public static async Task<entities.Client> GetByNameAsync(string name)
         {

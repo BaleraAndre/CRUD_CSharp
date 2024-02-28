@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using Teste.entities;
 
 namespace Teste.DataAccessObject.Purchase
@@ -40,6 +41,38 @@ namespace Teste.DataAccessObject.Purchase
             }
         }
 
+        public static async Task ExcluirCompraPorIdAsync(int compraId)
+        {
+            NpgsqlConnection connection = await DbConection.DbConection.GetConnectionAsync();
+
+
+            using (NpgsqlTransaction transaction = connection.BeginTransaction())
+            {
+
+                string deleteItemsQuery = "DELETE FROM ItemDaCompra WHERE CompraId = @CompraId";
+                using (NpgsqlCommand deleteItemsCommand = new NpgsqlCommand(deleteItemsQuery, connection, transaction))
+                {
+                    deleteItemsCommand.Parameters.AddWithValue("@CompraId", compraId);
+                    await deleteItemsCommand.ExecuteNonQueryAsync();
+                }
+
+
+                string deleteCompraQuery = "DELETE FROM Compra WHERE Id = @CompraId";
+                using (NpgsqlCommand deleteCompraCommand = new NpgsqlCommand(deleteCompraQuery, connection, transaction))
+                {
+                    deleteCompraCommand.Parameters.AddWithValue("@CompraId", compraId);
+                    await deleteCompraCommand.ExecuteNonQueryAsync();
+                }
+
+                await transaction.CommitAsync();
+                connection.Close();
+
+            }
+        }
+
+      
+
+        
         public static async Task<Compra> GetPurchaseByClientIdAsync(int clientId)
         {
             Compra compra = null;
