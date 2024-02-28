@@ -16,6 +16,7 @@ Aplicação desktop com dois níveis de acesso para gerenciamento de clientes, p
 
 ## Tela Login 
 Faça login para a aplicação funcionar de acordo com o nível de acesso do usuário 
+
 ![Login](./Login.png)
 
 ## Tela Menu Principal
